@@ -13,11 +13,22 @@ const ViewAll = (props) => {
   const { user, onLogin } = props;
   return(
     <section>  
-      {/* Read README.md file for route rules (Setting up routes and shell login/logout system) */} 
+      {/* Render login only (if user is "unauthenticated") */} 
       <Route exact path="/login" render={() => (
         !user && <ViewLogin onLogin={onLogin} />
       )}/>  
-      {/* Render [login view] only if user is logged out */}
+
+      {/* login route doesn't work (if user is authenticated) */
+        user && <Route exact path="/login" render={() => (
+          <Redirect to="/"/>
+        )}/>
+      }
+
+      {
+        /* Render views (if user is authenticated), otherwise 
+        (if user is unauthenticated) render login */
+      }
+      {/* Home? */}
       <Route exact path="/" render={() => (
         !user ? (
           <div className="l1"><Redirect to="/login"/></div>
@@ -26,14 +37,7 @@ const ViewAll = (props) => {
         )
       )}/>
 
-      {/* Don't Render [login view] if user is logged in */
-        user && <Route exact path="/login" render={() => (
-          <Redirect to="/"/>
-        )}/>
-      }
-
-      {/* Render views (if logged in) / [login view] (if logged out) */}
-      {/* --- [about view] --- */}
+      {/* About? */}
       <Route exact path="/about" render={() => (
         !user ? (
           <Redirect to="/login"/>
@@ -42,7 +46,7 @@ const ViewAll = (props) => {
         )
       )}/>
 
-      {/* --- [articles view] --- */}
+      {/* Articles? */}
       <Route exact path="/articles" render={() => (
         !user ? (
           <Redirect to="/login"/>
@@ -51,7 +55,7 @@ const ViewAll = (props) => {
         )
       )}/>
 
-      {/* --- [gallery view] --- */}
+      {/* Gallery? */}
       <Route exact path="/gallery" render={() => (
         !user ? (
           <Redirect to="/login"/>

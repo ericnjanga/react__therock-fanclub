@@ -19,11 +19,9 @@ const MainNav = (props) => {
           </div>
         ) : (
           //Display only "login" button only if user is logged out
-           
-            <ul> 
-              <li><Link to={`/login`}>Login</Link></li> 
-            </ul> 
-           
+          <ul> 
+            <li><Link to={`/login`}>Login</Link></li> 
+          </ul> 
         )
       } 
     </nav>

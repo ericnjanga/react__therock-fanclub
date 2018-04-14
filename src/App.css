@@ -40,8 +40,11 @@
 }
 .App__btnLogout {
   position: absolute;
-  bottom: 20px;
+  top: 20px;
   right: 20px;
+  border: 1px solid lime;
+  background: transparent;
+  color: lime;
 }
 
 .App-title {
@@ -72,7 +75,6 @@
 
 .App__footer {
   background-color: #333; 
-  text-align: center;
 }
  
 
@@ -84,4 +86,7 @@
 }
 .view--login button {
   padding: 10px;
+  text-align: center;
+  border: 1px solid #999;
+  background-color: lime;
 }
