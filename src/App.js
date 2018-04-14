@@ -46,13 +46,8 @@ class App extends Component {
       <Router>
         <div className="App"> 
           <MainHeader user={user} onLogout={this.handleLogout} />
-          <section className="App__content"> 
-            {/* Read README.md file for route rules (Setting up routes and shell login/logout system) */} 
-            <Route exact path="/login" render={() => (
-              !user && <ViewLogin onLogin={this.handleLogin} />
-            )}/> 
-            {/* Contains all views */} 
-            <ViewAll user={user} /> 
+          <section className="App__content">
+            <ViewAll user={user} onLogin={this.handleLogin} /> 
           </section>
           <MainFooter />
         </div>

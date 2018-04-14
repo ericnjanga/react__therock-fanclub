@@ -10,9 +10,13 @@ import ViewLogin from './ViewLogin.js';
 import ViewTermsAndConditions from './ViewTermsAndConditions.js';
 
 const ViewAll = (props) => {
-  const { user } = props;
+  const { user, onLogin } = props;
   return(
-    <section> 
+    <section>  
+      {/* Read README.md file for route rules (Setting up routes and shell login/logout system) */} 
+      <Route exact path="/login" render={() => (
+        !user && <ViewLogin onLogin={onLogin} />
+      )}/>  
       {/* Render [login view] only if user is logged out */}
       <Route exact path="/" render={() => (
         !user ? (
