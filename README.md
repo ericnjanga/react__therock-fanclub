@@ -10,14 +10,14 @@ eric.njanga@gmail.com / 647 704 7219 / Toronto, Canada
 - [Project Dependencies](#project-dependencies)
 - [Development Steps](#development-steps)
   - [Setting up routes and shell login/logout system](#routes-login-logout-shell)
-  - [Font Awesome (through npm)](#routes-login-logout-shell)
-  - [Adding Twitter Bootstrap (through npm)](#routes-login-logout-shell)
-  - [Using modularized CSS](#routes-login-logout-shell)
-  - [Connecting with firebase](#routes-login-logout-shell)
-  - [Login/logout with firebase](#routes-login-logout-shell)
-  - [Creating content with firebase](#routes-login-logout-shell)
-  - [Views transition](#routes-login-logout-shell)
-  - [Posting a update (twitter like with SVG circle)](#routes-login-logout-shell)
+  - [Font Awesome (through npm)](#xxx)
+  - [Adding Twitter Bootstrap (through npm)](#xxx)
+  - [Using modularized CSS](#xxx)
+  - [Connecting with firebase](#xxx)
+  - [Login/logout with firebase](#xxx)
+  - [Creating content with firebase](#xxx)
+  - [Views transition](#xxx)
+  - [Posting a update (twitter like with SVG circle)](#xxx)
 
 
 ## Project Dependencies
@@ -29,6 +29,8 @@ eric.njanga@gmail.com / 647 704 7219 / Toronto, Canada
 Describes the incremental development steps and the features added
 
 ### Setting up routes and shell login/logout system
+[See the branch here](https://github.com/ericnjanga/react__therock-fanclub/tree/routes-shell-auth).
+The steps:
 - Using [React Router](https://github.com/ReactTraining/react-router) to setup routes
 - Organize the layout into components
 - Setup a shell login/logout system to simulate layout change (state change) when user authenticates in/out
