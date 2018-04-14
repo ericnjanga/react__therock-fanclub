@@ -1,3 +1,9 @@
+/**
+ * Rendering the main application
+ * ------------------------------
+ * Eric Njanga - 2018
+ * http://ericnjanga.com
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';

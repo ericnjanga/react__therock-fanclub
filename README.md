@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 React application about a fictional "The Rock Fan club". This app is designed to demonstrate how specific things can be accomplished with ReactJS. Each feature will be branched, it demonstrates the usage of a specific technology or technique. You can clone any branch and reuse it for your specific project.
 
 ### Contact me
-eric.njanga@gmail.com / 647 704 7219 / Toronto, Canada
+eric.njanga@gmail.com / 647 704 7219 / Toronto, Canada.
 
 ## Table of Contents
 
@@ -32,5 +32,11 @@ Describes the incremental development steps and the features added
 [See the branch here](https://github.com/ericnjanga/react__therock-fanclub/tree/routes-shell-auth).
 The steps:
 - Using [React Router](https://github.com/ReactTraining/react-router) to setup routes
+  - Unauthenticated users:
+    - They only have access to 2 pages: login and terms and conditions routes
+    - When they log in (so get authenticated), they must be immediately redirected to the home route
+  - Authenticated users:
+    - They have access to all pages, except login
+    - When they log out (so gets unauthenticated), they must be immediately redirected to the login route, regardless of the current route
 - Organize the layout into components
 - Setup a shell login/logout system to simulate layout change (state change) when user authenticates in/out
