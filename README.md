@@ -1,6 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-React application about a fictional "The Rock Fan club". This app is designed to demonstrate how specific things can be accomplished with ReactJS. Each feature will be branched, it demonstrates the usage of a specific technology or technique.
+React application about a fictional "The Rock Fan club". This app is designed to demonstrate how specific things can be accomplished with ReactJS. Each feature will be branched, it demonstrates the usage of a specific technology or technique. You can clone any branch and reuse it for your specific project.
+
+### Contact me
+eric.njanga@gmail.com / 647 704 7219 / Toronto, Canada
 
 ## Table of Contents
 
