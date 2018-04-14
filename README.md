@@ -1,12 +1,20 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-React application about a fictional "The Rock Fan club". This app is designed to demonstrate how specific things can be accomplished with ReactJS. Each feature will be documented and demonstrates the usage of a specific technology or technique.
+React application about a fictional "The Rock Fan club". This app is designed to demonstrate how specific things can be accomplished with ReactJS. Each feature will be branched, it demonstrates the usage of a specific technology or technique.
 
 ## Table of Contents
 
 - [Project Dependencies](#project-dependencies)
 - [Development Steps](#development-steps)
   - [Setting up routes and shell login/logout system](#routes-login-logout-shell)
+  - [Font Awesome (through npm)](#routes-login-logout-shell)
+  - [Adding Twitter Bootstrap (through npm)](#routes-login-logout-shell)
+  - [Using modularized CSS](#routes-login-logout-shell)
+  - [Connecting with firebase](#routes-login-logout-shell)
+  - [Login/logout with firebase](#routes-login-logout-shell)
+  - [Creating content with firebase](#routes-login-logout-shell)
+  - [Views transition](#routes-login-logout-shell)
+  - [Posting a update (twitter like with SVG circle)](#routes-login-logout-shell)
 
 
 ## Project Dependencies
