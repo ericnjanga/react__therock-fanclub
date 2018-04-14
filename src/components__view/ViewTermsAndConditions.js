@@ -9,7 +9,7 @@
 import React from 'react';
 
 //Component ...
-const PageTermsAndConditions = () => {
+const ViewTermsAndConditions = () => {
   return(
     <div>
       <h2>TermsAndConditions view</h2>
@@ -46,4 +46,4 @@ const PageTermsAndConditions = () => {
   );
 }//[end] TermsAndConditions
 
-export default PageTermsAndConditions;
+export default ViewTermsAndConditions;

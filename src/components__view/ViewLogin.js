@@ -10,7 +10,7 @@
 import React from 'react';
 
 //Component ...
-const PageLogin = (props) => {
+const ViewLogin = (props) => {
   return(
     <div className="view--login">
       <h2>Login view</h2>
@@ -19,4 +19,4 @@ const PageLogin = (props) => {
   );
 }//[end] Login
 
-export default PageLogin;
+export default ViewLogin;

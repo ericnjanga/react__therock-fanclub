@@ -9,7 +9,7 @@
 import React from 'react';
 
 //Component ...
-const PageAbout = () => {
+const ViewAbout = () => {
   return(
     <div>
       <h2>About view</h2>
@@ -23,4 +23,4 @@ const PageAbout = () => {
   );
 }//[end] About
 
-export default PageAbout;
+export default ViewAbout;
