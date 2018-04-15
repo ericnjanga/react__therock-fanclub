@@ -15,6 +15,7 @@ import MainFooter from './components__global/MainFooter.js';
 import ViewAll from './components__view/ViewAll.js'; 
 import ViewLogin from './components__view/ViewLogin.js';
 
+
 //Main App class
 class App extends Component {
   constructor(props) {
