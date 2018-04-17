@@ -1,0 +1,94 @@
+ 
+.MainNav ul {
+  padding-top: 10px;
+  list-style: none;
+  margin: 0; 
+  padding: 0;
+} 
+
+
+/*--- theme ---*/
+.MainNav {
+}
+.MainNav__list a {
+  text-decoration: none; 
+  color: #333;
+}
+/* .MainNav__btn-frame .App__btnLogout { 
+  display: block;
+    padding: 10px 20px;
+    border: 0px solid;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+} */
+
+@media(max-width: 765px) { 
+  .MainNav {
+    display: none;
+  }
+  .MainNav.is-active {
+    display: block;
+    position: relative;
+    top: 20px;
+    width: calc(100% + 40px);
+    left: -20px;
+  }
+  .MainNav__list {
+    position: absolute; 
+    left: 0; 
+    width:  100%;
+    background-color: #ccc;
+    font-size: 0.9rem;
+  }
+  .MainNav__list hr {
+    width: 100%;
+    position: relative;
+    left: 0px;
+    border-top: 1px solid #999;
+    border-bottom: 0px solid #000;
+    margin-bottom: 0;
+  }
+  .MainNav__list a { 
+    display: block;
+    padding: 10px 20px; 
+    color: #333;
+  }
+  .MainNav__btn-frame .App__btnLogout { 
+    display: block;
+    padding: 10px 20px;
+    border: 0px solid;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+  }
+}
+
+@media(min-width: 766px) {
+  .MainNav{ 
+    margin-left: -15px; 
+  }
+  .MainNav ul li {
+    display: inline-block;
+  } 
+  .MainNav a {
+    display: inline-block;
+    padding: 5px 15px;
+    color: lime;
+  }
+  .MainNav__list hr {
+    display: none;
+  }
+  .MainNav__btn-frame {
+    float: right;
+  }
+  .MainNav__btn-frame .App__btnLogout { 
+    background: transparent;
+    border: 0;
+    color: lime;
+    font-size: 1rem;
+    padding: 0;
+    position: relative;
+    top: 5px; 
+  }
+}

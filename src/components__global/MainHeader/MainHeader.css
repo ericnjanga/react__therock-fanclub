@@ -1,0 +1,28 @@
+
+.App__header {
+  position: relative;
+  background-color: #222; 
+  color: white;
+  padding: 20px;
+}
+.App__header .user-avatar{
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+
+
+.App-title {
+  margin: 0;
+  font-size: 1.5rem; 
+}
+.App-title a { 
+  color: lime;
+  text-decoration: none;
+}
+.App-title small {
+  font-style: italic;
+  color: #ccc;
+  font-size: 1rem;
+}

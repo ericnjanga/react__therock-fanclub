@@ -14,7 +14,7 @@ const ViewArticles = () => {
     <div>
       <h2>Articles view</h2>
       <div className="view__content">
-        <img src="https://media.gettyimages.com/photos/dwayne-johnson-aka-the-rock-poses-for-a-portrait-at-the-2017-peoples-picture-id632633646?s=612x612" />
+        <img src="https://media.gettyimages.com/photos/dwayne-johnson-aka-the-rock-poses-for-a-portrait-at-the-2017-peoples-picture-id632633646?s=612x612" alt="About" />
         <p>Lollipop cupcake apple pie cookie sesame snaps pastry toffee cheesecake cotton candy. Dessert carrot cake caramels biscuit marzipan jelly beans ice cream icing cheesecake. Oat cake gingerbread topping apple pie.</p>
         <p>Candy canes carrot cake muffin carrot cake fruitcake pie sesame snaps. Sweet roll lemon drops tart tart pie marshmallow soufflé sweet gingerbread. Donut macaroon cupcake candy canes toffee chocolate cake.</p>
         <p>Biscuit pudding cupcake toffee dessert pastry. Muffin marshmallow chocolate bar. Dragée apple pie halvah pastry dessert jelly beans. Apple pie apple pie pie halvah cupcake marshmallow.</p>
