@@ -14,6 +14,7 @@ const MainNav = (props) => {
           <li><Link onClick={onCloseNav} to={`/about`}>About</Link></li>
           <li><Link onClick={onCloseNav} to={`/articles`}>Articles</Link></li>
           <li><Link onClick={onCloseNav} to={`/gallery`}>Gallery</Link></li>
+          <li><Link onClick={onCloseNav} to={`/message-board`}>Message Board</Link></li>
           <hr />
           <li className="MainNav__btn-frame">
             <button className="App__btnLogout" onClick={onLogout}>Sign out</button>

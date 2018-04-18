@@ -8,6 +8,7 @@ import ViewGallery from './ViewGallery.js';
 import ViewHome from './ViewHome.js';
 import ViewLogin from './ViewLogin.js';
 import ViewTermsAndConditions from './ViewTermsAndConditions.js';
+import ViewMessageBoard from './ViewMessageBoard.js';
 
 const ViewAll = (props) => {
   const { user, onLogin } = props;
@@ -61,6 +62,15 @@ const ViewAll = (props) => {
           <Redirect to="/login"/>
         ) : (
           <Route path="/gallery" exact={true} component={ViewGallery} />
+        )
+      )}/>
+
+      {/* Message Board? */}
+      <Route exact path="/message-board" render={() => (
+        !user ? (
+          <Redirect to="/login"/>
+        ) : (
+          <Route path="/message-board" exact={true} component={ViewMessageBoard} />
         )
       )}/>
       {/* Render views (if logged in) / [login view] (if logged out) */}
