@@ -8,7 +8,7 @@ import ViewGallery from './ViewGallery.js';
 import ViewHome from './ViewHome.js';
 import ViewLogin from './ViewLogin.js';
 import ViewTermsAndConditions from './ViewTermsAndConditions.js';
-import ViewMessageBoard from './ViewMessageBoard.js';
+import ViewMessageBoard from './ViewMessageBoard/ViewMessageBoard.js';
 
 const ViewAll = (props) => {
   const { user, onLogin } = props;
