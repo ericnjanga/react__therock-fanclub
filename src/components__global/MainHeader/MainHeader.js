@@ -18,8 +18,9 @@ const MainHeader = (props) => {
       { 
         user && <UserAvatar src={user.photoURL} alt={user.displayName} onToggleNav={onToggleNav} /> 
       }
-
-      <MainNav navIsActive={navIsActive} onLogout={onLogout} onCloseNav={onCloseNav} />
+      {
+        user && <MainNav navIsActive={navIsActive} onLogout={onLogout} onCloseNav={onCloseNav} />
+      } 
     </header>
   ); 
 }
