@@ -80,8 +80,8 @@ class App extends Component {
     //If they were, sign them back in.
     auth.onAuthStateChanged((user) => { 
       this.setState({ user }); 
-      console.log('2) user=', user)
-      console.log('2) this.state.user=', this.state.user)
+      // console.log('2) user=', user)
+      // console.log('2) this.state.user=', this.state.user)
     });
 
     //Make sure main navigation is closed each time
