@@ -74,7 +74,13 @@
   .MainNav a {
     display: inline-block;
     padding: 5px 15px;
+    color: #ccc;
+  }
+  .MainNav a:hover {
+    display: inline-block;
+    padding: 5px 15px;
     color: lime;
+    text-decoration: underline;
   }
   .MainNav__list hr {
     display: none;
@@ -85,8 +91,7 @@
   .MainNav__btn-frame .App__btnLogout { 
     background: transparent;
     border: 0;
-    color: lime;
-    font-size: 1rem;
+    color: lime; 
     padding: 0;
     position: relative;
     top: 5px; 
