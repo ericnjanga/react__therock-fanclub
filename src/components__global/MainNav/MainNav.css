@@ -14,14 +14,7 @@
   text-decoration: none; 
   color: #333;
 }
-/* .MainNav__btn-frame .App__btnLogout { 
-  display: block;
-    padding: 10px 20px;
-    border: 0px solid;
-    width: 100%;
-    text-align: left;
-    background: transparent;
-} */
+ 
 
 @media(max-width: 765px) { 
   .MainNav {
