@@ -36,6 +36,8 @@
 
 
 .App__footer {
+  position: relative;
+  z-index: 100;
   background-color: #333; 
 }
  

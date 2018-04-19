@@ -1,0 +1,82 @@
+
+
+.ViewMessageBoard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ViewMessageBoard__fig {
+  margin: 0;
+  max-width: 450px;
+}
+.ViewMessageBoard__fig img {
+  max-width: 100%;
+}
+.ViewMessageBoard .btn-primary {
+  position: fixed; 
+  z-index: 100000000;
+}
+
+
+
+ 
+/*-- small screens --*/
+@media(max-width: 765px) { 
+  .ViewMessageBoard { 
+   background: #939496;
+  }
+  .ViewMessageBoard__fig {
+    position: absolute;
+    top:0;
+    left: 0;
+  }
+  .ViewMessageBoard .btn-primary { 
+    bottom: 70px; 
+    width: 70px;
+    height: 70px;
+    border-radius: 70px;
+    right: 60px;
+    box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.24);
+  }
+  .ViewMessageBoard .btn-primary span { 
+    display: none;
+  }
+  .UserMessageList {
+    margin-top: 25%;
+    padding: 0 20px;
+  }
+  .UserMessageList__title {
+    position: relative;
+  }
+}
+
+/*-- larger screens --*/
+@media(min-width: 766px) { 
+  .ViewMessageBoard { 
+    padding-top: 60px;
+  }
+  
+  .ViewMessageBoard .btn-primary { 
+    bottom: 300px; 
+  }
+
+  .UserMessageList {
+    position: fixed;
+    top: 0;
+    padding-top: 160px;
+    right: 0;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: scroll;
+    width: 400px;
+    z-index: 10; 
+  }
+  .UserMessageList__title { 
+    transform: rotate(-90deg);
+    position: fixed;
+    top: 250px;
+    right: 295px;
+    z-index: 1000; 
+  }
+}

@@ -70,7 +70,9 @@ const ViewAll = (props) => {
         !user ? (
           <Redirect to="/login"/>
         ) : (
-          <Route path="/message-board" exact={true} component={ViewMessageBoard} />
+          <Route path="/message-board" exact={true} render={()=>{
+            return <ViewMessageBoard user={user} />
+          }} />
         )
       )}/>
       {/* Render views (if logged in) / [login view] (if logged out) */}
