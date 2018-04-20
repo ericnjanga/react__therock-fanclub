@@ -44,6 +44,7 @@
   .UserMessageList {
     margin-top: 25%;
     padding: 0 20px;
+    width: 100%;
   }
   .UserMessageList__title {
     position: relative;

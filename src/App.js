@@ -21,8 +21,11 @@ import ViewAll from './components__view/ViewAll.js';
 //Import widget components
 import Toast from './components__widget/Toast/Toast.js'; 
 
+
+
 //Main styles
 import './App.css';
+import updateRecordInfo from './utilities/updateUserInfo.js';
 
 
 //Main App class
@@ -47,7 +50,17 @@ class App extends Component {
       this.setState({
         user
       });
-    });  
+      
+      //Save user record in the database
+      const newRec = {
+        uid : user.uid,
+        photoURL : user.photoURL,
+        email : user.email
+      };
+      updateRecordInfo('users', newRec, 'uid');
+      //.... 
+      
+    });//[end] user successful login
   }
 
   //Shell logout method
@@ -68,13 +81,15 @@ class App extends Component {
   }
 
   //When we want the nav to be explicitely closed
-  handleCloseNav(){  
-    this.setState({
-      navIsActive: false
-    });
+  handleCloseNav(){
+    if(this.state.navIsActive){
+      this.setState({
+        navIsActive: false
+      });
+    } 
   }
 
-  componentDidMount(){ console.log('1) this.state.user=', this.state.user)
+  componentDidMount(){
     //Checks every single time the app loads to see if the user 
     //was already signed in last time they visited your app. 
     //If they were, sign them back in.
@@ -124,6 +139,3 @@ class App extends Component {
 
 
 export default App;
-
-
-

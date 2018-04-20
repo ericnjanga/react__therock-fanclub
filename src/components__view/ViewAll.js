@@ -12,8 +12,8 @@ import ViewMessageBoard from './ViewMessageBoard/ViewMessageBoard.js';
 
 const ViewAll = (props) => {
   const { user, onLogin } = props;
-  return(
-    <section>  
+  return( 
+    <section>   
       {/* Render login only (if user is "unauthenticated") */} 
       <Route exact path="/login" render={() => (
         !user && <ViewLogin onLogin={onLogin} />
