@@ -19,8 +19,7 @@ class UserMessageModal extends React.Component {
   }
 
   handleSubmit(event, user) {
-    event.preventDefault();
-    console.log('...handleSubmit', this.state, user);
+    event.preventDefault(); 
 
 		//...
 		const listRef = firebase.database().ref('board-msg');
@@ -28,24 +27,14 @@ class UserMessageModal extends React.Component {
 			title: this.state.title, 
       content: this.state.content, 
       uid : user.uid,
-			date: Date.now()
-			// expiry: this.state.expiry, 
-			// description: this.state.description, 
-			// image: this.state.image,
-		};
-		//...
-		// listRef.orderByChild('date').on("child_added", function(snapshot) {
-		//   console.log(snapshot.key + " was " + snapshot.val().date + " date");
-		// });
+			date: Date.now() 
+		}; 
 		//... 
-		listRef.push(item, (error)=>{ 
-			// console.log('...error=', error);
-			// console.log('****...Item pushed', this );
+		listRef.push(item, (error)=>{  
 			if(error){
 				console.error('Error while pusing: ', error);
 			}else{
-				//...
-				// console.log('****Submitted', this );
+				//... 
 				this.setState((prevState, props) => {
 					return {
 						title: '',

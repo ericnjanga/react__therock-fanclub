@@ -8,6 +8,7 @@
  */
 
 import React from 'react';
+import { Button } from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'; 
 import faGoogle from '@fortawesome/fontawesome-free-brands/faGoogle';
 
@@ -16,10 +17,10 @@ const ViewLogin = (props) => {
   return(
     <div className="view--login">
       <h2>Login view</h2>
-      <button onClick={props.onLogin} className="app__btn app__btn--icon icon-google">
+      <Button color="primary" onClick={props.onLogin}>
         <FontAwesomeIcon icon={faGoogle} />
         Login with Google
-      </button>
+      </Button>
     </div>
   );
 }//[end] Login

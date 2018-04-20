@@ -4,8 +4,7 @@ import UserMessage from './../UserMessage/UserMessage.js';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';  
 import faHeart from '@fortawesome/fontawesome-free-solid/faHeart'; 
 
-const UserMessageList = (props) => {
-  // console.log('...auth.currentUser=', auth.currentUser)
+const UserMessageList = (props) => { 
   return(
     <section className="UserMessageList"> 
       <h3 className="UserMessageList__title">We <FontAwesomeIcon icon={faHeart} /> TheRock</h3>

@@ -94,9 +94,7 @@ class App extends Component {
     //was already signed in last time they visited your app. 
     //If they were, sign them back in.
     auth.onAuthStateChanged((user) => { 
-      this.setState({ user }); 
-      // console.log('2) user=', user)
-      // console.log('2) this.state.user=', this.state.user)
+      this.setState({ user });  
     });
 
     //Make sure main navigation is closed each time
