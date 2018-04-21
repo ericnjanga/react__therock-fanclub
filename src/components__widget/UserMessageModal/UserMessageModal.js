@@ -42,10 +42,11 @@ class UserMessageModal extends React.Component {
 					}
 				}); 
 			}
-    });//[end] listRef.push 
+    });//[end] listRef.push
     
-
-  }
+    //...
+    this.props.toggle();
+  }//[end] handleSubmit
 
   handleChange(event) { 
 		this.setState({
