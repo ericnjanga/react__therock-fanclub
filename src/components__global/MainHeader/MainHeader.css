@@ -1,29 +1,67 @@
 
-.App__header {
-  position: relative;
-  background-color: #222; 
-  color: white;
-  padding: 20px;
+.app-header { 
+  padding: 10px 15px; 
   z-index: 100;
+  background-color: #222;  
 }
-.App__header .user-avatar{
-  position: absolute;
-  top: 15px;
-  right: 20px;
+.app-header__top {
+  display: flex;
+  align-items: center; 
+  width: 100%;
 }
 
 
 
-.App-title {
-  margin: 0;
-  font-size: 1.5rem; 
+.App-brand {
+  margin: 0; 
 }
-.App-title a { 
+.App-brand a { 
   color: lime;
   text-decoration: none;
 }
-.App-title small {
+.App-brand small {
   font-style: italic;
-  color: #ccc;
-  font-size: 1rem;
+  color: #ccc; 
+}
+
+
+@media(max-width: 765px) {  
+  .app-header {
+    position: fixed; 
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 15px; 
+    z-index: 100;
+    background-color: #222;  
+  }
+  .app-header__top {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  .app-header .user-avatar{ 
+    margin-right: 10px;
+  }
+  .App-brand { 
+    font-size: 1.1rem; 
+  }
+  .App-brand small { 
+    font-size: 0.8rem;
+  }
+}
+
+@media(min-width: 766px) { 
+  .app-header { 
+    padding: 20px;  
+  }
+  .app-header__top { 
+    justify-content: space-between;    
+    margin-bottom: 20px;  
+  }
+  .App-brand { 
+    font-size: 1.5rem; 
+  }
+  .App-brand small { 
+    font-size: 1rem;
+  }
 }

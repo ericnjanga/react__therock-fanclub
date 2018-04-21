@@ -15,10 +15,12 @@ const MainNav = (props) => {
           <li><NavLink activeClassName="active" onClick={onCloseNav} to={`/articles`}>Articles</NavLink></li>
           <li><NavLink activeClassName="active" onClick={onCloseNav} to={`/gallery`}>Gallery</NavLink></li>
           <li><NavLink activeClassName="active" onClick={onCloseNav} to={`/message-board`}>Message Board</NavLink></li>
-          <hr />
+          {
+            /**<hr />
           <li className="MainNav__btn-frame">
-            <button className="App__btnLogout" onClick={onLogout}>Sign out</button>
-          </li>
+            <button className="App__btnLogout" onClick={onLogout}>Sign out...</button>
+          </li> */
+          }
         </ul> 
       </div>  
     </nav>

@@ -100,7 +100,7 @@ class App extends Component {
     //Make sure main navigation is closed each time
     //the app's body is clicked
     const this_node = ReactDOM.findDOMNode(this);
-    const node_main_header = document.querySelector('.App__header');
+    const node_main_header = document.querySelector('.app-header');
     this_node.addEventListener("click", (event) => {
       const click_in_header = event.path.indexOf(node_main_header);
       if(click_in_header < 0){

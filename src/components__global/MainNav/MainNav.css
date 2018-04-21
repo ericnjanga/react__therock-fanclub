@@ -58,8 +58,10 @@
 }
 
 @media(min-width: 766px) {
-  .MainNav{ 
-    margin-left: -15px; 
+  .MainNav{  
+    text-align: center;
+    font-size: 0.9rem;
+    text-transform: uppercase;
   }
   .MainNav ul li {
     display: inline-block;
