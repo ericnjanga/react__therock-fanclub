@@ -1,13 +1,11 @@
 /**
  * Login View
  * ---------------------
- * 
- * About component: 
- * - Renders login panel
- * - cCalls a props function on click
+ *  
  */
 
 import React from 'react';
+import './ViewLogin.css';
 import { Button } from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'; 
 import faGoogle from '@fortawesome/fontawesome-free-brands/faGoogle';

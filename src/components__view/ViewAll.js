@@ -2,12 +2,12 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 //Import view components 
-import ViewAbout from './ViewAbout.js';
-import ViewArticles from './ViewArticles.js';
-import ViewGallery from './ViewGallery.js';
-import ViewHome from './ViewHome.js';
-import ViewLogin from './ViewLogin.js';
-import ViewTermsAndConditions from './ViewTermsAndConditions.js';
+import ViewAbout from './ViewAbout/ViewAbout.js';
+import ViewArticles from './ViewArticles/ViewArticles.js';
+import ViewGallery from './ViewGallery/ViewGallery.js';
+import ViewHome from './ViewHome/ViewHome.js';
+import ViewLogin from './ViewLogin/ViewLogin.js';
+import ViewTermsAndConditions from './ViewTermsAndConditions/ViewTermsAndConditions.js';
 import ViewMessageBoard from './ViewMessageBoard/ViewMessageBoard.js';
 
 const ViewAll = (props) => {

@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import './ViewTermsAndConditions.css';
 
 //Component ...
 const ViewTermsAndConditions = () => {

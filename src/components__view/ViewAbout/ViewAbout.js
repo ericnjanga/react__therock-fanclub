@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import './ViewAbout.css';
 
 //Component ...
 const ViewAbout = () => {
