@@ -6,11 +6,11 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 're
 import HorizontalNav from './../HorizontalNav/HorizontalNav.js';
 import MenuPrimary from './../MenuPrimary.js';
 import MenuSecondary from './../MenuSecondary.js';
-import './MainHeader.css';
+import './AppHeader.css';
 
 import UserAvatar from './../../components__widget/UserAvatar/UserAvatar.js';
  
-class MainHeader extends React.Component { 
+class AppHeader extends React.Component { 
   constructor(props) {
     super(props);
     this.state = {
@@ -67,4 +67,4 @@ class MainHeader extends React.Component {
   }//[end] render
 }
 
-export default MainHeader;
+export default AppHeader;

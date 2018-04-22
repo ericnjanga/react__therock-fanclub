@@ -11,7 +11,7 @@ import faPencil from '@fortawesome/fontawesome-free-solid/faPencilAlt';
 
 import therock_img from './../../images/therock-1.jpeg'; 
 //...
-import { Button } from 'reactstrap';
+import { Button, Container, Row, Col } from 'reactstrap';
 import firebase from '../../services/firebase'; 
 
 class ViewMessageBoard extends React.Component {
@@ -108,24 +108,28 @@ class ViewMessageBoard extends React.Component {
     const { itemsList } = this.state; 
     
     return(
-      <div className="ViewMessageBoard">
-        <figure className="ViewMessageBoard__fig">
-          <img src={therock_img} alt="The Rock" />
-          <figcaption>TheRock (Dwayne Johnson)</figcaption>
-        </figure>
+      <Container className="ViewMessageBoard">
+        <Row>
+          <Col> 
+            <figure className="ViewMessageBoard__fig">
+              <img src={therock_img} alt="The Rock" />
+              <figcaption>TheRock (Dwayne Johnson)</figcaption>
+            </figure>
 
-        { /* Display a toast if the list of items is not yet ready */
-          !itemsList ? <Toast msg={'Fetching data'} /> : <UserMessageList items={itemsList} />
-        }
+            { /* Display a toast if the list of items is not yet ready */
+              !itemsList ? <Toast msg={'Fetching data'} /> : <UserMessageList items={itemsList} />
+            }
 
-        
-        <UserMessageModal user={user} isOpen={this.state.modal} toggle={this.toggle} 
-        className={this.props.className} />
-       
-        <Button color="primary" onClick={this.toggle}>
-          <span>Write a Message</span> <FontAwesomeIcon icon={faPencil} />
-        </Button>
-      </div>
+            
+            <UserMessageModal user={user} isOpen={this.state.modal} toggle={this.toggle} 
+            className={this.props.className} />
+          
+            <Button color="primary" onClick={this.toggle}>
+              <span>Write a Message</span> <FontAwesomeIcon icon={faPencil} />
+            </Button> 
+          </Col>
+        </Row>
+      </Container>
     ); 
   }
 }

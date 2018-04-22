@@ -4,12 +4,10 @@
   list-style: none;
   margin: 0; 
   padding: 0;
+  display: flex; 
+  justify-content: center;
 } 
 
-
-/*--- theme ---*/
-.HorizontalNav {
-}
 .HorizontalNav__list a {
   text-decoration: none; 
   color: #333;
@@ -43,15 +41,13 @@
     display: block;
     padding: 10px 20px;
     border: 0px solid;
-    width: 100%;
-    text-align: left;
+    width: 100%; 
     background: transparent;
   }
 }
 
 @media(min-width: 766px) {
-  .HorizontalNav{  
-    text-align: center;
+  .HorizontalNav{   
     font-size: 0.9rem;
     text-transform: uppercase;
   }

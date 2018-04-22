@@ -12,9 +12,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { auth, provider } from './services/firebase.js';
 
 //Import global components
-import MainHeader from './components__global/MainHeader/MainHeader.js';
+import AppHeader from './components__global/AppHeader/AppHeader.js';
 import VerticalNav from './components__global/VerticalNav/VerticalNav.js';
-import MainFooter from './components__global/MainFooter.js';
+import AppFooter from './components__global/AppFooter/AppFooter.js';
 import MenuPrimary from './components__global/MenuPrimary.js';
 import MenuSecondary from './components__global/MenuSecondary.js';
 
@@ -107,11 +107,11 @@ class App extends Component {
     return (
       <Router>
         <div className="App"> 
-          <MainHeader user={user} onLogout={this.handleLogout} 
+          <AppHeader user={user} onLogout={this.handleLogout} 
           onToggleVertNav={this.handleToggleVertNav}
           onCloseVertNav={this.handleCloseVertNav}>
             <MenuPrimary />
-          </MainHeader>
+          </AppHeader>
 
           {
             user && <VerticalNav user={user} isActive={vertNavIsActive} 
@@ -122,15 +122,13 @@ class App extends Component {
             </VerticalNav>
           }
           
-          <section className="App__content">
-          {
-            user===undefined && <Toast msg={'Loading your preferences'} />
-          } 
-          {
-            user!==undefined && <ViewAll user={user} onLogin={this.handleLogin} />
-          }
+          <section className="app-content">
+            {
+              user===undefined ? <Toast msg={'Loading your preferences'} /> : <ViewAll user={user} onLogin={this.handleLogin} />
+            }  
           </section>
-          <MainFooter />
+
+          <AppFooter />
         </div>
       </Router>
     );

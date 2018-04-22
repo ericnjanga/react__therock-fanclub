@@ -1,65 +1,47 @@
 
-
 .App {
   display: flex;
   flex-direction: column;
   height: 100vh;
   background: #eee;
+  overflow-y: scroll;
 }
-.App__footer a {
-  color: lime;
-  font-size: 0.9rem;
-} 
-
-.App__content {
+.App > .app-content {
   position: relative;
+  /*-- We want the content to occupy the rentire height 
+  real estate left by 'app-header' and 'app-footer' --*/
   flex: 1; 
   max-width: 700px;
   z-index: 1;
 }
 
 
+.App > .app-header,
+.App > .app-footer {  
+  z-index: 2;
+}
 
-/*-- larger screens --*/
-@media(min-width: 766px) { 
-  .App__content { 
-    margin: auto;
+@media(max-width: 765px) {  
+  .App > .app-content { 
+    margin-top: 67px; 
   } 
 }
 
-.view__content::after {
-  
-    display: block;
-    content: "";
-    clear: both;
+
+/*-- larger screens --*/
+@media(min-width: 766px) { 
+  .App > .app-content {
+    margin: auto;
+    margin-top: 60px; 
+  } 
+}
+
+
  
-}
-.view__content img {
-  float: left;
-  max-width: 340px;
-  height: inherit;
-  margin: 0 10px 10px 0;
-}
-
-
-.App__footer {
-  /* position: relative;
-  z-index: 30; */
-  background-color: #333; 
-}
- 
-
-
-
-
-.view--login {
-  text-align: center;
-}
-
 
 
 /**
- * app__btn component
+ * all buttons with SVG icons
  * ------------------
 */
 .btn .svg-inline--fa {

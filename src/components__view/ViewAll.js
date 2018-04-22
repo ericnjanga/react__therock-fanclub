@@ -11,6 +11,7 @@ import ViewSettings from './ViewSettings/ViewSettings.js';
 import ViewLogin from './ViewLogin/ViewLogin.js';
 import ViewTermsAndConditions from './ViewTermsAndConditions/ViewTermsAndConditions.js';
 import ViewMessageBoard from './ViewMessageBoard/ViewMessageBoard.js';
+import './ViewAll.css';
 
 const ViewAll = (props) => {
   const { user, onLogin } = props;

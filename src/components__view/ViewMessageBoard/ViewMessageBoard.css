@@ -31,6 +31,9 @@
     left: 0;
   }
   .ViewMessageBoard .btn-primary { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
     bottom: 70px; 
     width: 70px;
     height: 70px;
@@ -38,11 +41,14 @@
     right: 60px;
     box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.24);
   }
+  .ViewMessageBoard .btn-primary .svg-inline--fa { 
+    margin: 0;
+  }
   .ViewMessageBoard .btn-primary span { 
     display: none;
   }
   .UserMessageList {
-    margin-top: 25%;
+    margin-top: 20px;
     padding: 0 20px;
     width: 100%;
   }
