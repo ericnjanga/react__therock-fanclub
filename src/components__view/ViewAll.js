@@ -6,6 +6,8 @@ import ViewAbout from './ViewAbout/ViewAbout.js';
 import ViewArticles from './ViewArticles/ViewArticles.js';
 import ViewGallery from './ViewGallery/ViewGallery.js';
 import ViewHome from './ViewHome/ViewHome.js';
+import ViewProfile from './ViewProfile/ViewProfile.js';
+import ViewSettings from './ViewSettings/ViewSettings.js';
 import ViewLogin from './ViewLogin/ViewLogin.js';
 import ViewTermsAndConditions from './ViewTermsAndConditions/ViewTermsAndConditions.js';
 import ViewMessageBoard from './ViewMessageBoard/ViewMessageBoard.js';
@@ -73,6 +75,24 @@ const ViewAll = (props) => {
           <Route path="/message-board" exact={true} render={()=>{
             return <ViewMessageBoard user={user} />
           }} />
+        )
+      )}/>
+
+      {/* Profile? */}
+      <Route exact path="/profile" render={() => (
+        !user ? (
+          <Redirect to="/login"/>
+        ) : (
+          <Route path="/profile" exact={true} component={ViewProfile} />
+        )
+      )}/>
+
+      {/* Settings? */}
+      <Route exact path="/settings" render={() => (
+        !user ? (
+          <Redirect to="/login"/>
+        ) : (
+          <Route path="/settings" exact={true} component={ViewSettings} />
         )
       )}/>
       {/* Render views (if logged in) / [login view] (if logged out) */}
