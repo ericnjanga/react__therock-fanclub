@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Link, NavLink } from 'react-router-dom'; 
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
 
 import HorizontalNav from './../HorizontalNav/HorizontalNav.js';
 import MenuPrimary from './../MenuPrimary.js';
@@ -16,65 +16,51 @@ class MainHeader extends React.Component {
     this.state = {
       dropdownOpen: false
     }
-
-    this.toggle = this.toggle.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
-  toggle() {
+  toggleDropdown() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
     });
   }
+ 
 
   render() {
-    const { user, onLogout, navIsActive, onToggleNav, onCloseNav } = this.props;
+    const { user, onLogout, navIsActive, onToggleVertNav, onCloseVertNav } = this.props;
     return(
       <header className="app-header"> 
         <div className="app-header__top">
           <h1 className="App-brand">
-            <Link onClick={onCloseNav} to={`/`}>
+            <Link onClick={onCloseVertNav} to={`/`}>
               The Rock <small>Fan Club</small>
             </Link> 
           </h1> 
           { 
-            user && <UserAvatar item={user} onToggleNav={onToggleNav} /> 
+            user && (
+              <div>
+                <Button className="btn-toggle-vertNav--sm" onClick={onToggleVertNav}>
+                  <UserAvatar item={user} /> 
+                </Button>
+                
+                <Dropdown direction="left" isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown} className="btn-toggle-vertNav--lg">
+                  <DropdownToggle>
+                    <UserAvatar item={user} /> 
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <MenuSecondary onLogout={onLogout} onToggleDropdown={this.toggleDropdown} /> 
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
+            )
           }
         </div> 
+
         {
-          user && <HorizontalNav navIsActive={navIsActive} onLogout={onLogout} onCloseNav={onCloseNav}>
+          user && <HorizontalNav navIsActive={navIsActive} onLogout={onLogout} onCloseVertNav={onCloseVertNav}>
             <MenuPrimary />
           </HorizontalNav>
         } 
-
-        
-        
-       
-
-        {
-          user && <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-            <DropdownToggle>
-              <UserAvatar item={user} onToggleNav={onToggleNav} /> 
-            </DropdownToggle>
-            <DropdownMenu>
-              <MenuSecondary />
-              {
-                /*<DropdownItem header>Header</DropdownItem> 
-              <DropdownItem>
-                <NavLink to={`/profile`}>Profile</NavLink> 
-              </DropdownItem> 
-              <DropdownItem>
-                <NavLink to={`/settings`}>Settings</NavLink> 
-              </DropdownItem> 
-              <DropdownItem divider />
-              <DropdownItem>Sign Out</DropdownItem>*/
-              }
-              
-            </DropdownMenu>
-          </Dropdown>
-        }
-        
-        
-
       </header>
     ); 
 

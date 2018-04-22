@@ -27,7 +27,7 @@ import Toast from './components__widget/Toast/Toast.js';
 
 
 //Main styles
-import './App.css';
+import './styles/App.css';
 import updateRecordInfo from './utilities/updateUserInfo.js';
 
 
@@ -37,12 +37,12 @@ class App extends Component {
     super(props);
     this.state = {
       user: undefined,
-      navIsActive: false
+      vertNavIsActive: false
     }
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
-    this.handleToggleNav = this.handleToggleNav.bind(this);
-    this.handleCloseNav = this.handleCloseNav.bind(this);
+    this.handleLogin          = this.handleLogin.bind(this);
+    this.handleLogout         = this.handleLogout.bind(this);
+    this.handleToggleVertNav  = this.handleToggleVertNav.bind(this);
+    this.handleCloseVertNav       = this.handleCloseVertNav.bind(this);
   }
 
   //Shell login method
@@ -72,22 +72,22 @@ class App extends Component {
     .then(() => {
       this.setState({
         user: null,
-        navIsActive: false
+        vertNavIsActive: false
       });
     });  
   } 
 
-  handleToggleNav(){  
+  handleToggleVertNav(){  
     this.setState({
-      navIsActive: !this.state.navIsActive
+      vertNavIsActive: !this.state.vertNavIsActive
     });
   }
 
   //When we want the nav to be explicitely closed
-  handleCloseNav(){
-    if(this.state.navIsActive){
+  handleCloseVertNav(){
+    if(this.state.vertNavIsActive){
       this.setState({
-        navIsActive: false
+        vertNavIsActive: false
       });
     } 
   }
@@ -98,38 +98,26 @@ class App extends Component {
     //If they were, sign them back in.
     auth.onAuthStateChanged((user) => { 
       this.setState({ user });  
-    });
-
-    //Make sure main navigation is closed each time
-    //the app's body is clicked
-    const this_node = ReactDOM.findDOMNode(this);
-    const node_main_header = document.querySelector('.app-header');
-    this_node.addEventListener("click", (event) => {
-      const click_in_header = event.path.indexOf(node_main_header);
-      if(click_in_header < 0){
-        this.handleCloseNav();
-      } 
-    });
-
-
+    });  
   }//[end]componentDidMount
   
   render() {
     const { user } = this.state;
-    const { navIsActive } = this.state;
+    const { vertNavIsActive } = this.state;
     return (
       <Router>
         <div className="App"> 
           <MainHeader user={user} onLogout={this.handleLogout} 
-          onToggleNav={this.handleToggleNav} navIsActive={navIsActive} 
-          onCloseNav={this.handleCloseNav}>
+          onToggleVertNav={this.handleToggleVertNav}
+          onCloseVertNav={this.handleCloseVertNav}>
             <MenuPrimary />
           </MainHeader>
 
           {
-            user && <VerticalNav user={user}>
+            user && <VerticalNav user={user} isActive={vertNavIsActive} 
+            onCloseVertNav={this.handleCloseVertNav}>
               <MenuPrimary />
-              <hr />
+              <hr className="hr-menu" />
               <MenuSecondary onLogout={this.handleLogout} />
             </VerticalNav>
           }

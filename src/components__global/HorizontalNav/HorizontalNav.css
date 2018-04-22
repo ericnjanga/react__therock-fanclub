@@ -55,8 +55,9 @@
     font-size: 0.9rem;
     text-transform: uppercase;
   }
-  .HorizontalNav ul li {
+  .HorizontalNav .nav-item {
     display: inline-block;
+    width: initial;
   } 
   .HorizontalNav a {
     display: inline-block;
