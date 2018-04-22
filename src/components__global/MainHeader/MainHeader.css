@@ -1,7 +1,7 @@
 
 .app-header { 
   padding: 10px 15px; 
-  z-index: 100;
+  /* z-index: 30; */
   background-color: #222;  
 }
 .app-header__top {
@@ -32,7 +32,6 @@
     align-items: center;
     width: 100%;
     padding: 10px 15px; 
-    z-index: 100;
     background-color: #222;  
   }
   .app-header__top {

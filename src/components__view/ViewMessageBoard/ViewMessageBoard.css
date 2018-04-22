@@ -14,7 +14,7 @@
 }
 .ViewMessageBoard .btn-primary {
   position: fixed; 
-  z-index: 100000000;
+  z-index: 10;
 }
 
 
@@ -60,7 +60,6 @@
   .ViewMessageBoard .btn-primary { 
     bottom: 300px; 
   }
-
   .UserMessageList {
     position: fixed;
     top: 0;
@@ -78,6 +77,6 @@
     position: fixed;
     top: 250px;
     right: 295px;
-    z-index: 1000; 
+    z-index: 10; 
   }
 }

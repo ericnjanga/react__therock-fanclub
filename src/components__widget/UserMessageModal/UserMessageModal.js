@@ -60,7 +60,7 @@ class UserMessageModal extends React.Component {
     const { title, content } = this.state; 
     return( 
       <Modal isOpen={isOpen} toggle={toggle} className={'UserMessageModal'}>
-        <UserAvatar src={user.photoURL} alt={user.displayName} /> 
+        <UserAvatar item={user} /> 
         <ModalHeader toggle={toggle}>Say somethig <b>{user.displayName}</b></ModalHeader>
         <ModalBody>
           <MessageForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} title={title} content={content} />

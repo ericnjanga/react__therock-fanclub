@@ -2,8 +2,14 @@ import React from 'react';
 import './UserAvatar.css';
 
 const UserAvatar = (props) => {
+    const { item, showSubInfo } = props;
     return(
-        <img className="user-avatar" src={props.src} alt={props.alt} onClick={props.onToggleNav} />
+      <section class="UserAvatar">
+        <img className="user-avatar" src={item.photoURL} alt={item.displayName} onClick={props.onToggleNav} />
+        {
+          showSubInfo && <p>{item.displayName}</p>
+        }
+      </section>
     );
 }
 

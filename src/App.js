@@ -13,7 +13,10 @@ import { auth, provider } from './services/firebase.js';
 
 //Import global components
 import MainHeader from './components__global/MainHeader/MainHeader.js';
+import VerticalNav from './components__global/VerticalNav/VerticalNav.js';
 import MainFooter from './components__global/MainFooter.js';
+import MenuPrimary from './components__global/MenuPrimary.js';
+import MenuSecondary from './components__global/MenuSecondary.js';
 
 //Import view components
 import ViewAll from './components__view/ViewAll.js'; 
@@ -118,7 +121,19 @@ class App extends Component {
       <Router>
         <div className="App"> 
           <MainHeader user={user} onLogout={this.handleLogout} 
-          onToggleNav={this.handleToggleNav} navIsActive={navIsActive} onCloseNav={this.handleCloseNav} />
+          onToggleNav={this.handleToggleNav} navIsActive={navIsActive} 
+          onCloseNav={this.handleCloseNav}>
+            <MenuPrimary />
+          </MainHeader>
+
+          {
+            user && <VerticalNav user={user}>
+              <MenuPrimary />
+              <hr />
+              <MenuSecondary onLogout={this.handleLogout} />
+            </VerticalNav>
+          }
+          
           <section className="App__content">
           {
             user===undefined && <Toast msg={'Loading your preferences'} />

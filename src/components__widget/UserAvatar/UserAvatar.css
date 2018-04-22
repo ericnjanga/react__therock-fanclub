@@ -1,7 +1,14 @@
- .user-avatar {
-    border-radius: 120px;
-    cursor: pointer;
-    width: 35px;
-    height: 35px; 
-    border: 1px solid lime;
+
+.UserAvatar > img {
+  margin-bottom: 7px;
+}
+.UserAvatar > p {
+  margin-bottom: 0;
+}
+.user-avatar {
+  border-radius: 120px;
+  cursor: pointer;
+  width: 35px;
+  height: 35px; 
+  border: 1px solid lime;
 }
