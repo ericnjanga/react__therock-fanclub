@@ -18,9 +18,7 @@ class UserMessage extends React.Component {
 
   componentDidMount() {
     DBUser.get(this.props.data.uid).then((user) => {
-      this.setState({
-        user
-      });
+      this.setState({ user });
     });
   }
 
@@ -30,7 +28,7 @@ class UserMessage extends React.Component {
     return( 
       <Card className="UserMessage"> 
         <CardBody>
-          { user && <img className="user-avatar" src={user.photoURL} alt={user.name} /> }
+          { user && <img className="user-avatar" src={user.photoURL} alt={user.displayName} /> }
           <CardTitle>{data.title}</CardTitle>
           <CardSubtitle>Card subtitle</CardSubtitle>
           <CardText>{data.content}</CardText> 

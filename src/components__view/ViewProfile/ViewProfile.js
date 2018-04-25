@@ -10,6 +10,7 @@ import UserAvatar from './../../components__widget/UserAvatar/UserAvatar.js';
 import getUserFromDB from '../../utilities/db_utilities.js'; 
 import Toast from './../../components__widget/Toast/Toast.js'; 
 import firebase from '../../services/firebase.js'; 
+import DBUser from '../../utilities/DBUser.class.js'; 
 
 import './ViewProfile.css';
 
@@ -18,13 +19,20 @@ class ViewProfile extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      db_user       : null,
-      saving_data   : false,
-      new_uname     : '',
-      new_ubio      : '',
-      new_uphone    : '',
-      new_uvisible  : false
+    this.state = { 
+      profile : { 
+        displayName     : '', 
+        biography       : '',
+        phoneNumber     : '',
+        currentUser     : null,
+        visible         : false
+      },
+      displayName     : '', 
+      biography       : '',
+      phoneNumber     : '',
+      currentUser     : null,
+      visible         : false,
+      saving_data     : false,
     }
     this.handleChange     = this.handleChange.bind(this);
     this.handleCbxChange  = this.handleCbxChange.bind(this);
@@ -33,21 +41,18 @@ class ViewProfile extends React.Component {
 
 
   handleChange(e) { 
-    console.log('???????handleChange', e.target.name );
-    let prop = 'new_'+e.target.name;
-    // console.log('???????prop=', prop);
+    console.log('???????handleChange', e.target.name ); 
     this.setState({
-      ['new_'+e.target.name] : e.target.value
+      [e.target.name] : e.target.value
     });
   }
 
 
   handleCbxChange(e) { 
-    console.log('???????handleCbxChange', e.target.value );
-    let prop = 'new_'+e.target.name;
+    console.log('???????handleCbxChange', e.target.value ); 
     // console.log('???????prop=', prop);
     this.setState({
-      ['new_'+e.target.name] : !this.state['new_'+e.target.name]
+      [e.target.name] : !this.state[e.target.name]
     });
   }
 
@@ -56,60 +61,39 @@ class ViewProfile extends React.Component {
     e.preventDefault();
     this.setState({ saving_data : true });
 
-    //USE REFERENCE ID HERE
-    let userId = '-LAUDeojwWTo-cjee9hb';
+    // let record = {
+    //   uid: this.state.currentUser.uid
+    // };
+    // console.log('...rec', record);
 
-    console.log('>>>this.state.db_user=' ,this.state.db_user);
-    firebase.database().ref('users/' + userId).set(
-      {
-        uid           : this.state.db_user.uid,
-        name          : this.state.new_uname,
-        biography     : this.state.new_ubio,
-        photoURL      : this.state.db_user.photoURL,
-        email         : this.state.db_user.email,
-        phoneNumber   : this.state.db_user.new_uphone,
-        visible       : this.state.db_user.new_uvisible
-      }, (error)=>{ 
-        if(error){
-          console.log('Couldn\'t save data');
-        }
-        else{
-          // console.log("Data successfully");
-          this.setState({ saving_data : false });
-        } 
-      }
-    );
+
+
+    DBUser.updateProfile(this.state).then((success)=>{
+      console.log('success=', success, this);
+      this.setState({
+        saving_data     : false
+      });
+    });
+ 
+  }//[end] handleSubmit
+
+
+  componentWillMount() {
+    this.setState({
+      currentUser : DBUser.getCurrentUser()
+    });
+    console.log('>>>curr user =', DBUser.getCurrentUser() );
+    console.log('>>>========' );
+
+    // currentUser
   }
 
   
-
-  componentDidMount() {
-    /**
-     * ...
-     */ 
-    const loggedUser = this.props.user; 
-     
-    getUserFromDB(loggedUser).then((itemReady) => {
-      console.log('???????itemReady=', itemReady);
-      console.log('???????itemReady.displayName=', itemReady.displayName);
-      let new_uphone = itemReady.phoneNumber ? itemReady.phoneNumber : loggedUser.phoneNumber;
-      new_uphone = new_uphone ? new_uphone : '';
-      this.setState({
-        db_user       : itemReady,
-        //Display saved username, otherwise display auth service object username
-        new_uname     : itemReady.name ? itemReady.name : loggedUser.displayName,
-        new_uphone     : new_uphone,
-
-        new_ubio : itemReady.biography ? itemReady.biography : this.state.new_ubio
-      }); 
-    });
  
-  }//[end] componentDidMount
-
 
   render() {
     const { user } = this.props;
-    const { db_user, new_uname, new_ubio, new_uphone, new_uvisible, saving_data } = this.state;
+    const { currentUser, displayName, biography, phoneNumber, visible, saving_data } = this.state;
     
     return(
       <Container>
@@ -123,34 +107,34 @@ class ViewProfile extends React.Component {
       
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
-                <Label for="uname">User Name</Label>
-                <Input type="text" name="uname" id="uname" value={new_uname} onChange={this.handleChange} placeholder="Enter your username" />
+                <Label for="name">User Name</Label>
+                <Input type="text" name="displayName" id="displayName" value={displayName} onChange={this.handleChange} placeholder="Enter your username" />
               </FormGroup>
   
               <FormGroup>
-                <Label for="ubio">Biography</Label>
-                <Input type="textarea" name="ubio" id="ubio" value={new_ubio} onChange={this.handleChange} placeholder="Enter a short biographie" />
+                <Label for="biography">Biography</Label>
+                <Input type="textarea" name="biography" id="biography" value={biography} onChange={this.handleChange} placeholder="Enter a short biographie" />
               </FormGroup>
   
               <FormGroup>
-                <Label for="uemail">Email</Label> 
+                <Label for="email">Email</Label> 
                 {
-                  !db_user ? (
-                    <Input type="email" name="uemail" id="uemail" placeholder="Enter your email" />
+                  !currentUser ? (
+                    <Input type="email" name="email" id="email" placeholder="Enter your email" />
                   ) : (
-                    <Input type="email" name="uemail" id="uemail" placeholder={db_user.email} readOnly/>
+                    <Input type="email" name="email" id="email" placeholder={currentUser.email} readOnly/>
                   )
                 }  
               </FormGroup>   
   
               <FormGroup>
-                <Label for="uphone">Phone Number</Label> 
-                <Input type="text" name="uphone" id="uphone" value={new_uphone} onChange={this.handleChange} placeholder="Enter your phone number" />
+                <Label for="phoneNumber">Phone Number</Label> 
+                <Input type="text" name="phoneNumber" id="phoneNumber" value={phoneNumber} onChange={this.handleChange} placeholder="Enter your phone number" />
               </FormGroup>
    
               <FormGroup className="form-group" check>
                 <Label check>
-                  <Input type="checkbox" name="uvisible" id="uvisible" value={new_uvisible} onChange={this.handleCbxChange} />{' '}
+                  <Input type="checkbox" name="visible" id="visible" value={visible} onChange={this.handleCbxChange} />{' '}
                   Visible to everyone
                 </Label>
               </FormGroup>

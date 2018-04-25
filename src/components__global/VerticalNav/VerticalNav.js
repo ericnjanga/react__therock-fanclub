@@ -1,13 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';  
-import UserAvatar from './../../components__widget/UserAvatar/UserAvatar.js'
+import UserAvatar from './../../components__widget/UserAvatar/UserAvatar.js';
+import DBUser from '../../utilities/DBUser.class.js'; 
 
 import './VerticalNav.css';
 import './../../styles/menus.css';
 
 
 class VerticalNav extends React.Component { 
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null
+    }
+  }
   componentDidMount(){  
+    //Fetch user info from the database and save it in the state...
+    let uid = DBUser.getCurrentUser().uid;
+    DBUser.get(uid).then((user) => { 
+      this.setState({ user });
+    });
     //Close navigation only is certain nodes are targetted
     const this_node = ReactDOM.findDOMNode(this);
     this_node.addEventListener('click', (event) => { 
@@ -21,13 +33,16 @@ class VerticalNav extends React.Component {
     });
   }
 
+ 
+
   render() {
-    const { user, isActive, children } = this.props;
+    const { isActive, children } = this.props;
+    const { user } = this.state;
     return( 
       <section className={'VerticalNav' +(isActive?' is-active':'')}>
         <nav> 
           <div className="VerticalNav__navs">
-            <UserAvatar item={user} showSubInfo={true} />   
+            { user && <UserAvatar item={user} showSubInfo={true} /> } 
             <hr className="hr-menu" /> 
             {children} 
           </div>

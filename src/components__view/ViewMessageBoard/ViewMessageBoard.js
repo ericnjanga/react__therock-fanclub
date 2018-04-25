@@ -12,11 +12,9 @@ import faPencil from '@fortawesome/fontawesome-free-solid/faPencilAlt';
 import therock_img from './../../images/therock-1.jpeg'; 
 //...
 import { Button, Container, Row, Col } from 'reactstrap';
-
-import DBUser from '../../utilities/DBUser.class.js';  
+  
 import DBPost from '../../utilities/DBPost.class.js';  
-
-import firebase from '../../services/firebase'; 
+ 
 
 class ViewMessageBoard extends React.Component {
   constructor(props) {

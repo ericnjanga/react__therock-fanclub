@@ -27,8 +27,7 @@ import DBUser from  './utilities/DBUser.class.js';
 
 
 //Main styles
-import './styles/App.css';
-import UserMessage from './components__widget/UserMessage/UserMessage.js';
+import './styles/App.css'; 
 
 
 //Main App class
@@ -52,7 +51,7 @@ class App extends Component {
       const user = result.user;
       this.setState({ user });
       //Update user records in database 
-      DBUser.save(user);
+      DBUser.saveBasicInfo(user);
     });//[end] user successful login
   }
 
@@ -89,7 +88,7 @@ class App extends Component {
     auth.onAuthStateChanged((user) => { 
       this.setState({ user });
       if(user){
-        DBUser.save(user); 
+        DBUser.saveBasicInfo(user); 
       } 
     });  
   }//[end]componentDidMount
@@ -107,7 +106,7 @@ class App extends Component {
           </AppHeader>
 
           {
-            user && <VerticalNav user={user} isActive={vertNavIsActive} 
+            user && <VerticalNav isActive={vertNavIsActive} 
             onCloseVertNav={this.handleCloseVertNav}>
               <MenuPrimary />
               <hr className="hr-menu" />
