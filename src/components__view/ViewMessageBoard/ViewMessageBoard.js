@@ -12,6 +12,10 @@ import faPencil from '@fortawesome/fontawesome-free-solid/faPencilAlt';
 import therock_img from './../../images/therock-1.jpeg'; 
 //...
 import { Button, Container, Row, Col } from 'reactstrap';
+
+import DBUser from '../../utilities/DBUser.class.js';  
+import DBPost from '../../utilities/DBPost.class.js';  
+
 import firebase from '../../services/firebase'; 
 
 class ViewMessageBoard extends React.Component {
@@ -40,69 +44,23 @@ class ViewMessageBoard extends React.Component {
      * Fetch all elements of listA and for each element of listA:
      * -> find the corresponding element in list B, join it to A and save it into a final list
      */
-    const nodeRef_A = firebase.database().ref('board-msg');
-    const nodeRef_B = firebase.database().ref('users'); 
-    nodeRef_A.on('value', (snapshot) => {
-      const listA     = snapshot.val();
-      const propA     = 'userData';
-      let temp_listA  = [];
-      let itemsList_complete  = [];
 
-      //First save incoming items in a temporary list ...
-      for (let indexA in listA) { 
-        temp_listA.push({
-          id      : indexA,
-          uid     : listA[indexA].uid,
-          title   : listA[indexA].title,
-          content : listA[indexA].content
-        }); 
-      }
-
-      let promiseCounter = 0;
-      //Going throgh all records and saving them into the database
-      for (let i=0, l=temp_listA.length ; i<l ; i++) { 
-        let itemA = temp_listA[i];  
-        /**
-         * Looking for itemB (related to itemA) in listB
-         * -----
-         * Create a promise which encapsulates the loop and resolves
-         * when itemB has been found and mounted on itemA via a property (propA) 
-         */
-        let promiseB = new Promise((resolve, reject) => {
-          nodeRef_B.on('value', (snapshot) => { 
-            let listB = snapshot.val(); 
-            for (let indexB in listB) {
-              const itemB = listB[indexB];
-              if(itemA.uid===itemB.uid){ 
-                itemA[propA] = itemB;
-                //resolve the promise immediately and stop the loop
-                resolve(itemA);
-                return;
-              }
-            }
-            //If complementary information is not found, send a null info
-            resolve(null);
-            // reject('couldn\'t find user');
-          });//[end] nodeRef_B.on
-        });
-
-        /**
-         * When promiseB resolves, saves the ready item in the final list
-         * and update the state only if all items have been saved
-         */
-        promiseB.then((itemReady) => {
-          promiseCounter ++;
-          if(itemReady){//only save valid info
-            itemsList_complete.push(itemReady);  
-          } 
-          if(promiseCounter===temp_listA.length){ 
-            this.setState({
-              itemsList: itemsList_complete.reverse()
-            });
-          } 
-        });
-      }//[end] Going throgh all records and saving them into the database
-    });//[end] within nodeRef_A
+    DBPost.getNode().on('value', (snapshot) => {
+      //Get data (iterable object)
+      const nodeVal     = snapshot.val(); 
+      const postMap = new Map(Object.entries(nodeVal));
+      //push values in a regular array
+      let itemsList = [];
+      postMap.forEach((value, key)=>{
+        let post = Object.assign({}, value);
+        post.id = key;
+        itemsList.push(post);
+      });
+      //save reverse array in state (most recent posts first)
+      this.setState({
+        itemsList: itemsList.reverse()
+      }); 
+    });//[end] within nodeRef_A  
   }//[edn] componentDidMount
  
 

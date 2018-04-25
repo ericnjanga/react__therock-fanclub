@@ -23,8 +23,7 @@ import ViewAll from './components__view/ViewAll.js';
 //Import widget components
 import Toast from './components__widget/Toast/Toast.js'; 
 
-import DBUser from  './utilities/DBUser.class.js';
-import updateRecordInfo from './utilities/updateUserInfo.js';
+import DBUser from  './utilities/DBUser.class.js'; 
 
 
 //Main styles
@@ -43,7 +42,7 @@ class App extends Component {
     this.handleLogin          = this.handleLogin.bind(this);
     this.handleLogout         = this.handleLogout.bind(this);
     this.handleToggleVertNav  = this.handleToggleVertNav.bind(this);
-    this.handleCloseVertNav       = this.handleCloseVertNav.bind(this);
+    this.handleCloseVertNav   = this.handleCloseVertNav.bind(this);
   }
 
   //Shell login method
@@ -52,10 +51,8 @@ class App extends Component {
     .then((result) => {
       const user = result.user;
       this.setState({ user });
-      console.log('...user=',user);
+      //Update user records in database 
       DBUser.save(user);
-      //Update user records in database
-      // updateRecordInfo('users', user, 'uid');
     });//[end] user successful login
   }
 
@@ -92,7 +89,6 @@ class App extends Component {
     auth.onAuthStateChanged((user) => { 
       this.setState({ user });
       if(user){
-        console.log('>>>auth.onAuthStateChanged', user);
         DBUser.save(user); 
       } 
     });  

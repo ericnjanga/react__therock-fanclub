@@ -5,6 +5,9 @@ import { Nav, NavItem, Button } from 'reactstrap';
 const MenuSecondary = (props) => {
   const { onLogout, onToggleDropdown } = props; 
 
+  //Proveide shell of a function if there is nothing in props
+  let toggleDropdown = props.onToggleDropdown?props.onToggleDropdown: ()=> {};
+
   return( 
     <Nav>
       {props.children}
@@ -19,7 +22,7 @@ const MenuSecondary = (props) => {
       <hr className="hr-menu space" />
       
       <NavItem>
-        <Button onClick={ ()=>{onLogout(); onToggleDropdown();} }  className="btn-logout">Sign Out</Button> 
+        <Button onClick={ ()=>{onLogout(); toggleDropdown();} }  className="btn-logout">Sign Out</Button> 
       </NavItem>  
     </Nav> 
   );

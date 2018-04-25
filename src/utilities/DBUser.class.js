@@ -1,22 +1,16 @@
 
 import firebase from './../services/firebase.js';
 
-//Object template
-let userTpl = {  
-  // id            : null,       //Record id      
-  // uid           : 'user.uid',   //user id
-  name          : 'user.displayName',
-  biography     : '',
-  photoURL      : 'user.photoURL',
-  email         : 'user.email',
-  phoneNumber   : 'user.phoneNumber',
-  visible       : false
-};
 
+/**
+ * Class dedicated to users
+ */
 class DBUser { 
-  //...
-  static save(user){ 
-    //...
+  /**
+   * Save a user object in the database ...
+   */
+  static save(user) {  
+    //prepare the user object
     let tpl_user = {};
     tpl_user.biography    = '';
     tpl_user.visible      = false;
@@ -29,6 +23,19 @@ class DBUser {
     record['/users/' + user.uid] = tpl_user;
     firebase.database().ref().update(record);  
   }
+
+  /**
+   * Get a user from the database ...
+   * (returns a promise which resolves when the snapshot is ready)
+   */ 
+  static get(uid) {
+    // var userId = firebase.auth().currentUser.uid;
+    return new Promise((resolve, reject) => {
+      firebase.database().ref('/users/' + uid).once('value').then(function(snapshot) {
+        resolve(snapshot.val()); 
+      });
+    }); 
+  }
 }
 
 export default DBUser;
@@ -36,15 +43,3 @@ export default DBUser;
 
 // Get a key for a new Post.
 // let newPostKey = firebase.database().ref().child('users').push().key;
-
-
-
-/*
-TdALheXqkeZbmLsYfFHChjpjLHA3
-  biography: ""
-  email: "eric.njanga@gmail.com"
-  name: "Eric Njanga"
-  photoURL: "https://lh5.googleusercontent.com/-COiFmnKgWAY/..."
-  uid: "TdALheXqkeZbmLsYfFHChjpjLHA3"
-  visible: false
-*/

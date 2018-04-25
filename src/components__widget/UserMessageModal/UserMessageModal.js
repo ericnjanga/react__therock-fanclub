@@ -4,6 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import MessageForm from '../MessageForm/MessageForm';
 import UserAvatar from '../UserAvatar/UserAvatar';
 import './UserMessageModal.css';
+import DBPost from '../../utilities/DBPost.class.js'; 
 import firebase from '../../services/firebase';
 
 
@@ -20,29 +21,22 @@ class UserMessageModal extends React.Component {
 
   handleSubmit(event, user) {
     event.preventDefault(); 
-
-		//...
-		const listRef = firebase.database().ref('board-msg');
+    //...
 		const item = { 
 			title: this.state.title, 
-      content: this.state.content, 
-      uid : user.uid,
-			date: Date.now() 
+      content: this.state.content
 		}; 
-		//... 
-		listRef.push(item, (error)=>{  
-			if(error){
-				console.error('Error while pusing: ', error);
-			}else{
-				//... 
-				this.setState((prevState, props) => {
-					return {
-						title: '',
-						content: ''
-					}
-				}); 
-			}
-    });//[end] listRef.push
+    
+    DBPost.save(item, user.uid).then((ready) => { 
+      //Cleanup form when post is successful ...
+      this.setState((prevState, props) => {
+        return {
+          title: '',
+          content: ''
+        }
+      }); 
+    });
+
     
     //...
     this.props.toggle();
