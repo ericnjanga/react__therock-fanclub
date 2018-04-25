@@ -4,8 +4,7 @@
  */
 
 //Imports React packages
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react'; 
 import { BrowserRouter as Router } from 'react-router-dom';
 
 //Firebase Packages ...
@@ -24,11 +23,13 @@ import ViewAll from './components__view/ViewAll.js';
 //Import widget components
 import Toast from './components__widget/Toast/Toast.js'; 
 
+import DBUser from  './utilities/DBUser.class.js';
+import updateRecordInfo from './utilities/updateUserInfo.js';
 
 
 //Main styles
 import './styles/App.css';
-import updateRecordInfo from './utilities/updateUserInfo.js';
+import UserMessage from './components__widget/UserMessage/UserMessage.js';
 
 
 //Main App class
@@ -50,19 +51,11 @@ class App extends Component {
     auth.signInWithPopup(provider) 
     .then((result) => {
       const user = result.user;
-      this.setState({
-        user
-      });
-      
-      //Save user record in the database
-      const newRec = {
-        uid : user.uid,
-        photoURL : user.photoURL,
-        email : user.email
-      };
-      updateRecordInfo('users', newRec, 'uid');
-      //.... 
-      
+      this.setState({ user });
+      console.log('...user=',user);
+      DBUser.save(user);
+      //Update user records in database
+      // updateRecordInfo('users', user, 'uid');
     });//[end] user successful login
   }
 
@@ -97,7 +90,11 @@ class App extends Component {
     //was already signed in last time they visited your app. 
     //If they were, sign them back in.
     auth.onAuthStateChanged((user) => { 
-      this.setState({ user });  
+      this.setState({ user });
+      if(user){
+        console.log('>>>auth.onAuthStateChanged', user);
+        DBUser.save(user); 
+      } 
     });  
   }//[end]componentDidMount
   

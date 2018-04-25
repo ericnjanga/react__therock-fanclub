@@ -1,10 +1,8 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-
+import React from 'react';  
 import './HorizontalNav.css';
 
 const HorizontalNav = (props) => {
-  const { navIsActive, onCloseNav } = props; 
+  const { navIsActive } = props; 
    
   return( 
     <nav className={'HorizontalNav' + (navIsActive?' is-active':'')}>  

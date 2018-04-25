@@ -84,7 +84,9 @@ const ViewAll = (props) => {
         !user ? (
           <Redirect to="/login"/>
         ) : (
-          <Route path="/profile" exact={true} component={ViewProfile} />
+          <Route path="/profile" exact={true} render={()=>{
+            return <ViewProfile user={user} />
+          }} /> 
         )
       )}/>
 

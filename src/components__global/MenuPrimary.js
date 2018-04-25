@@ -25,23 +25,4 @@ const MenuPrimary = (props) => {
   );
 }
 
-export default MenuPrimary;
-
-
-{
-  /**
-<li><NavLink activeClassName="active" onClick={onCloseNav} to={`/`} exact={true}>Home</NavLink></li>
-<li><NavLink activeClassName="active" onClick={onCloseNav} to={`/about`}>About</NavLink></li>
-<li><NavLink activeClassName="active" onClick={onCloseNav} to={`/articles`}>Articles</NavLink></li>
-<li><NavLink activeClassName="active" onClick={onCloseNav} to={`/gallery`}>Gallery</NavLink></li>
-<li><NavLink activeClassName="active" onClick={onCloseNav} to={`/message-board`}>Message Board</NavLink></li>
-
-        <hr />
-        
-        <NavItem>
-          <NavLink disabled  to={`/about`}>Sign Out</NavLink>
-        </NavItem>
-
-        
-   */
-}
+export default MenuPrimary; 

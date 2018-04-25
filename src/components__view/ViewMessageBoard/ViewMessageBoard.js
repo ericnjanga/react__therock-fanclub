@@ -80,7 +80,9 @@ class ViewMessageBoard extends React.Component {
                 return;
               }
             }
-            reject('couldn\'t find itemB');
+            //If complementary information is not found, send a null info
+            resolve(null);
+            // reject('couldn\'t find user');
           });//[end] nodeRef_B.on
         });
 
@@ -90,7 +92,9 @@ class ViewMessageBoard extends React.Component {
          */
         promiseB.then((itemReady) => {
           promiseCounter ++;
-          itemsList_complete.push(itemReady);  
+          if(itemReady){//only save valid info
+            itemsList_complete.push(itemReady);  
+          } 
           if(promiseCounter===temp_listA.length){ 
             this.setState({
               itemsList: itemsList_complete.reverse()

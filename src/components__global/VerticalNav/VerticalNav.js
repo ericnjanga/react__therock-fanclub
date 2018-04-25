@@ -1,24 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { NavLink } from 'react-router-dom';
-import { Nav, NavItem } from 'reactstrap';
+import ReactDOM from 'react-dom';  
 import UserAvatar from './../../components__widget/UserAvatar/UserAvatar.js'
 
 import './VerticalNav.css';
 import './../../styles/menus.css';
 
 
-class VerticalNav extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+class VerticalNav extends React.Component { 
   componentDidMount(){  
     //Close navigation only is certain nodes are targetted
     const this_node = ReactDOM.findDOMNode(this);
     this_node.addEventListener('click', (event) => { 
-      const nodeList = document.querySelectorAll('.VerticalNav__obstructor, .VerticalNav__navs .nav-item, .VerticalNav__navs .user-avatar');
-      const click_in_header = event.path.indexOf(nodeList); 
+      const nodeList = document.querySelectorAll('.VerticalNav__obstructor, .VerticalNav__navs .nav-item, .VerticalNav__navs .user-avatar'); 
       for (let node of nodeList) { 
         if(event.path.indexOf(node) > -1){
           this.props.onCloseVertNav();

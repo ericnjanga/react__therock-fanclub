@@ -8,9 +8,11 @@
 }
 .App > .app-content {
   position: relative;
+  margin-bottom: 60px; 
   /*-- We want the content to occupy the rentire height 
   real estate left by 'app-header' and 'app-footer' --*/
   flex: 1; 
+  width: 100%;
   max-width: 700px;
   z-index: 1;
 }
@@ -23,7 +25,7 @@
 
 @media(max-width: 765px) {  
   .App > .app-content { 
-    margin-top: 67px; 
+    margin-top: 80px; /*67px; */
   } 
 }
 

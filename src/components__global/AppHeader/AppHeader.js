@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Link, NavLink } from 'react-router-dom'; 
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
+import { Link } from 'react-router-dom'; 
+import { Dropdown, DropdownToggle, DropdownMenu, Button } from 'reactstrap';
 
 import HorizontalNav from './../HorizontalNav/HorizontalNav.js';
 import MenuPrimary from './../MenuPrimary.js';
