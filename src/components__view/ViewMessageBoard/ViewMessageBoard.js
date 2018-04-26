@@ -83,7 +83,8 @@ class ViewMessageBoard extends React.Component {
             className={this.props.className} />
           
             <Button color="primary" onClick={this.toggle}>
-              <span>Write a Message</span> <FontAwesomeIcon icon={faPencil} />
+              <FontAwesomeIcon icon={faPencil} /> 
+              <span>Write a Message</span> 
             </Button> 
           </Col>
         </Row>
