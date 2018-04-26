@@ -23,8 +23,7 @@ class VerticalNav extends React.Component {
   }
 
   render() {
-    const { isActive, children, user } = this.props;
-    // const { user } = this.state;
+    const { isActive, children, user } = this.props; 
     return( 
       <section className={'VerticalNav' +(isActive?' is-active':'')}>
         <nav> 

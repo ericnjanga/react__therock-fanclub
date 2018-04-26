@@ -8,12 +8,13 @@ import Toast from './../../components__widget/Toast/Toast.js';
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'; 
 import faPencil from '@fortawesome/fontawesome-free-solid/faPencilAlt'; 
-
-import therock_img from './../../images/therock-1.jpeg'; 
 //...
 import { Button, Container, Row, Col } from 'reactstrap';
   
 import DBPost from '../../utilities/DBPost.class.js';  
+
+//Images ...
+import img1 from './../../images/therock-1.jpeg'; 
  
 
 class ViewMessageBoard extends React.Component {
@@ -68,19 +69,18 @@ class ViewMessageBoard extends React.Component {
     const { itemsList } = this.state; 
     
     return(
-      <Container className="ViewMessageBoard">
+      <Container className="view__content ViewMessageBoard"> 
         <Row>
           <Col> 
             <figure className="ViewMessageBoard__fig">
-              <img src={therock_img} alt="The Rock" />
-              <figcaption>TheRock (Dwayne Johnson)</figcaption>
-            </figure>
+              <img className="img-fluid" src={img1} alt="The Rock" />
+              <figcaption>The Rock (Dwayne Johnson), getty images</figcaption>
+            </figure> 
 
             { /* Display a toast if the list of items is not yet ready */
               !itemsList ? <Toast msg={'Fetching data'} /> : <UserMessageList items={itemsList} />
             }
 
-            
             <UserMessageModal user={user} isOpen={this.state.modal} toggle={this.toggle} 
             className={this.props.className} />
           

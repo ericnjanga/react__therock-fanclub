@@ -59,9 +59,9 @@
 
 /*-- larger screens --*/
 @media(min-width: 766px) { 
-  .ViewMessageBoard { 
+  /* .ViewMessageBoard { 
     padding-top: 60px;
-  }
+  } */
   
   .ViewMessageBoard .btn-primary { 
     bottom: 300px; 

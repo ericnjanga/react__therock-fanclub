@@ -6,13 +6,19 @@
 
 /*-- larger screens --*/
 @media(min-width: 766px) { 
-  .view__content img {
+  .view__content figure {
     float: left;
-    border: 10px solid #ccc;
     max-width: 340px;
     height: inherit;
     margin: 0 10px 10px 0;
   }
+}
+.view__content figcaption{
+  padding: .5rem;
+  font-style: italic;
+  font-family: georgia;
+  font-size: 0.9rem;
+  background-color: #d1e4d1;
 }
 .view__content::after { 
   display: block;

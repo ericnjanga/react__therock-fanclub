@@ -35,8 +35,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userProfile  : undefined,
-      user            : undefined,
+      userProfile     : undefined, 
       vertNavIsActive : false
     }
     this.handleLogin          = this.handleLogin.bind(this);
@@ -49,43 +48,28 @@ class App extends Component {
   //Shell login method
   handleLogin() { 
     auth.signInWithPopup(provider) 
-    .then((result) => {
-      const user = result.user;
-      // this.setState({ user });
-      // //Save fresh user records in database and save a local version to the state
-      // //(state version might contains some info from the database)
-      // this.setState({ userProfile:DBUser.saveBasicInfo(user) });
-      
-       
-      
+    .then((userAuthObject) => { 
       //Save fresh user records in database and save a local version to the state
       //(state version might contains some info from the database)
       let userProfile;
-      DBUser.saveBasicInfo(user).then((currUserInfo)=>{
-        userProfile = currUserInfo;
-        // console.log('1>>>currUserInfo=',currUserInfo);
-        // console.log('2user=',user);
-        // console.log('3this=',this);
-        this.setState({ user, userProfile });
+      DBUser.saveBasicInfo(userAuthObject.user).then((currUserInfo)=>{
+        userProfile = currUserInfo; 
+        this.setState({ userProfile });
       }); 
-      
-
-
-      
     });//[end] user successful login
   }
 
   //Shell logout method
   handleLogout() {
-    auth.signOut()
-    .then(() => {
+    auth.signOut().then(() => {
       this.setState({
-        user: null,
-        vertNavIsActive: false
+        userProfile     : null,
+        vertNavIsActive : false
       });
     });  
   } 
 
+  //Toggling vertical navigation visibility
   handleToggleVertNav(){  
     this.setState({
       vertNavIsActive: !this.state.vertNavIsActive
@@ -101,26 +85,21 @@ class App extends Component {
     } 
   }
 
+  //Signs users back-in everytime application loads 
+  //(FirebaseAuth service remembers their credentials)
   componentDidMount(){
-    //Checks every single time the app loads to see if the user 
-    //was already signed in last time they visited your app. 
-    //If they were, sign them back in.
-    auth.onAuthStateChanged((user) => { 
+    auth.onAuthStateChanged((userAuthObject) => { 
       //Save fresh user records in database and save a local version to the state
       //(state version might contains some info from the database)
       let userProfile;
-      if(user){ 
-        DBUser.saveBasicInfo(user).then((currUserInfo)=>{
-          userProfile = currUserInfo;
-          console.log('2>>>currUserInfo=',currUserInfo);
-          this.setState({ user, userProfile });
+      if(userAuthObject){  
+        DBUser.saveBasicInfo(userAuthObject).then((currUserInfo)=>{
+          userProfile = currUserInfo; 
+          this.setState({ userProfile });
         });
-      } 
-      console.log('..user=', user);
-      this.setState({ user, userProfile });
-      // if(user){
-      //   DBUser.saveBasicInfo(user); 
-      // } 
+      } else {
+        this.setState({ userProfile: null });
+      }   
     });  
   }//[end]componentDidMount
   
@@ -128,12 +107,12 @@ class App extends Component {
     this.setState({ userProfile });
   }
   render() {
-    const { user, userProfile } = this.state;
+    const { userProfile } = this.state;
     const { vertNavIsActive } = this.state;
     return (
       <Router>
         <div className="App"> 
-          <AppHeader user={user} onLogout={this.handleLogout} 
+          <AppHeader user={userProfile} onLogout={this.handleLogout} 
           onToggleVertNav={this.handleToggleVertNav}
           onCloseVertNav={this.handleCloseVertNav}>
             <MenuPrimary />
@@ -150,7 +129,7 @@ class App extends Component {
           
           <section className="app-content">
             {
-              user===undefined ? <Toast msg={'Loading your preferences'} /> : <ViewAll user={userProfile} onProfileChange={this.handleProfileUpdate} onLogin={this.handleLogin} />
+              userProfile===undefined ? <Toast msg={'Loading your preferences'} /> : <ViewAll user={userProfile} onProfileChange={this.handleProfileUpdate} onLogin={this.handleLogin} />
             }  
           </section>
 
