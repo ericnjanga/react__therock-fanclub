@@ -14,7 +14,7 @@ import ViewMessageBoard from './ViewMessageBoard/ViewMessageBoard.js';
 import './ViewAll.css';
 
 const ViewAll = (props) => {
-  const { user, onLogin } = props;
+  const { user, onLogin, onProfileChange } = props;
   return( 
     <section>   
       {/* Render login only (if user is "unauthenticated") */} 
@@ -85,7 +85,7 @@ const ViewAll = (props) => {
           <Redirect to="/login"/>
         ) : (
           <Route path="/profile" exact={true} render={()=>{
-            return <ViewProfile user={user} />
+            return <ViewProfile user={user} onProfileChange={onProfileChange} />
           }} /> 
         )
       )}/>

@@ -35,13 +35,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: undefined,
-      vertNavIsActive: false
+      userProfile  : undefined,
+      user            : undefined,
+      vertNavIsActive : false
     }
     this.handleLogin          = this.handleLogin.bind(this);
     this.handleLogout         = this.handleLogout.bind(this);
     this.handleToggleVertNav  = this.handleToggleVertNav.bind(this);
     this.handleCloseVertNav   = this.handleCloseVertNav.bind(this);
+    this.handleProfileUpdate  = this.handleProfileUpdate.bind(this);
   }
 
   //Shell login method
@@ -49,9 +51,27 @@ class App extends Component {
     auth.signInWithPopup(provider) 
     .then((result) => {
       const user = result.user;
-      this.setState({ user });
-      //Update user records in database 
-      DBUser.saveBasicInfo(user);
+      // this.setState({ user });
+      // //Save fresh user records in database and save a local version to the state
+      // //(state version might contains some info from the database)
+      // this.setState({ userProfile:DBUser.saveBasicInfo(user) });
+      
+       
+      
+      //Save fresh user records in database and save a local version to the state
+      //(state version might contains some info from the database)
+      let userProfile;
+      DBUser.saveBasicInfo(user).then((currUserInfo)=>{
+        userProfile = currUserInfo;
+        // console.log('1>>>currUserInfo=',currUserInfo);
+        // console.log('2user=',user);
+        // console.log('3this=',this);
+        this.setState({ user, userProfile });
+      }); 
+      
+
+
+      
     });//[end] user successful login
   }
 
@@ -86,15 +106,29 @@ class App extends Component {
     //was already signed in last time they visited your app. 
     //If they were, sign them back in.
     auth.onAuthStateChanged((user) => { 
-      this.setState({ user });
-      if(user){
-        DBUser.saveBasicInfo(user); 
+      //Save fresh user records in database and save a local version to the state
+      //(state version might contains some info from the database)
+      let userProfile;
+      if(user){ 
+        DBUser.saveBasicInfo(user).then((currUserInfo)=>{
+          userProfile = currUserInfo;
+          console.log('2>>>currUserInfo=',currUserInfo);
+          this.setState({ user, userProfile });
+        });
       } 
+      console.log('..user=', user);
+      this.setState({ user, userProfile });
+      // if(user){
+      //   DBUser.saveBasicInfo(user); 
+      // } 
     });  
   }//[end]componentDidMount
   
+  handleProfileUpdate(userProfile) {
+    this.setState({ userProfile });
+  }
   render() {
-    const { user } = this.state;
+    const { user, userProfile } = this.state;
     const { vertNavIsActive } = this.state;
     return (
       <Router>
@@ -106,7 +140,7 @@ class App extends Component {
           </AppHeader>
 
           {
-            user && <VerticalNav isActive={vertNavIsActive} 
+            userProfile && <VerticalNav user={userProfile} isActive={vertNavIsActive} 
             onCloseVertNav={this.handleCloseVertNav}>
               <MenuPrimary />
               <hr className="hr-menu" />
@@ -116,7 +150,7 @@ class App extends Component {
           
           <section className="app-content">
             {
-              user===undefined ? <Toast msg={'Loading your preferences'} /> : <ViewAll user={user} onLogin={this.handleLogin} />
+              user===undefined ? <Toast msg={'Loading your preferences'} /> : <ViewAll user={userProfile} onProfileChange={this.handleProfileUpdate} onLogin={this.handleLogin} />
             }  
           </section>
 

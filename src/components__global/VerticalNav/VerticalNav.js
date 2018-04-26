@@ -7,19 +7,8 @@ import './VerticalNav.css';
 import './../../styles/menus.css';
 
 
-class VerticalNav extends React.Component { 
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: null
-    }
-  }
-  componentDidMount(){  
-    //Fetch user info from the database and save it in the state...
-    let uid = DBUser.getCurrentUser().uid;
-    DBUser.get(uid).then((user) => { 
-      this.setState({ user });
-    });
+class VerticalNav extends React.Component {  
+  componentDidMount(){   
     //Close navigation only is certain nodes are targetted
     const this_node = ReactDOM.findDOMNode(this);
     this_node.addEventListener('click', (event) => { 
@@ -33,11 +22,9 @@ class VerticalNav extends React.Component {
     });
   }
 
- 
-
   render() {
-    const { isActive, children } = this.props;
-    const { user } = this.state;
+    const { isActive, children, user } = this.props;
+    // const { user } = this.state;
     return( 
       <section className={'VerticalNav' +(isActive?' is-active':'')}>
         <nav> 
