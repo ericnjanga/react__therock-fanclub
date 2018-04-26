@@ -11,6 +11,7 @@ import faPencil from '@fortawesome/fontawesome-free-solid/faPencilAlt';
 //...
 import { Button, Container, Row, Col } from 'reactstrap';
   
+import Figure from './../../components__widget/Figure/Figure.js';
 import DBPost from '../../utilities/DBPost.class.js';  
 
 //Images ...
@@ -72,10 +73,7 @@ class ViewMessageBoard extends React.Component {
       <Container className="view__content ViewMessageBoard"> 
         <Row>
           <Col> 
-            <figure className="ViewMessageBoard__fig">
-              <img className="img-fluid" src={img1} alt="The Rock" />
-              <figcaption>The Rock (Dwayne Johnson), getty images</figcaption>
-            </figure> 
+            <Figure img={img1} alt={'The Rock'} caption={'The Rock (Dwayne Johnson), getty images'} /> 
 
             { /* Display a toast if the list of items is not yet ready */
               !itemsList ? <Toast msg={'Fetching data'} /> : <UserMessageList items={itemsList} />

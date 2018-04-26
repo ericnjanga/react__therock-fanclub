@@ -13,13 +13,6 @@
     margin: 0 10px 10px 0;
   }
 }
-.view__content figcaption{
-  padding: .5rem;
-  font-style: italic;
-  font-family: georgia;
-  font-size: 0.9rem;
-  background-color: #d1e4d1;
-}
 .view__content::after { 
   display: block;
   content: "";

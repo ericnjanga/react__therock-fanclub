@@ -6,6 +6,7 @@
 
 import React from 'react'; 
 import { Container, Row, Col } from 'reactstrap';
+import Figure from './../../components__widget/Figure/Figure.js';
 import './ViewGallery.css';
 
 //Images ...
@@ -18,10 +19,7 @@ const ViewGallery = () => {
       <Row>
         <Col> 
           <h2>Gallery view</h2> 
-          <figure>
-            <img className="img-fluid" src={img1} alt="The Rock" />
-            <figcaption>The Rock (Dwayne Johnson), getty images</figcaption>
-          </figure>
+          <Figure img={img1} alt={'The Rock'} caption={'The Rock (Dwayne Johnson), getty images'} />
           <p>Gummi bears jelly beans chocolate cake marzipan muffin. Halvah cupcake fruitcake apple pie ice cream gingerbread chupa chups sweet. Tiramisu liquorice cheesecake tiramisu.</p>
           <p>Bear claw liquorice ice cream sugar plum cheesecake cotton candy pastry topping. Carrot cake fruitcake lollipop apple pie cheesecake. Jelly-o lemon drops brownie caramels. Candy canes cookie soufflé cookie cake tiramisu.</p>
           <p>Cupcake bear claw chupa chups caramels. Jelly beans soufflé cake cake lollipop chocolate cake chocolate cake tootsie roll. Gummi bears muffin macaroon halvah sesame snaps.</p>
