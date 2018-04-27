@@ -1,39 +1,35 @@
-
-import firebase from './../services/firebase.js';
-
 /**
  * Class dedicated to posts
  */
+import firebase from './../services/firebase.js';
+
+
 class DBPost {
   
-  /**
-   * Get all posts from the database
-   * (returns a promise which resolves when an iterator containing the posts is ready)
-   * (NOTE: changes to the database wont be reflected on thwe UI because the promise would have been resolved already)
-   */
+  //Get all posts from the database
+  //(returns a promise which resolves when an iterator containing the posts is ready)
+  //(NOTE: changes to the database wont be reflected on thwe UI because the promise would have been resolved already)
   static getAll() {
-    const nodeRef_A = firebase.database().ref('board-msg');
+    const odePosts = firebase.database().ref('board-msg');
     return new Promise((resolve, reject) => {
-      nodeRef_A.on('value', (snapshot) => {
+      odePosts.on('value', (snapshot) => {
         const nodeVal     = snapshot.val(); 
         const map = new Map(Object.entries(nodeVal));
         resolve(map); 
-      });//[end] within nodeRef_A 
+      });//[end] within odePosts 
     });//[end] Promise 
   }//[end] getAll
 
   
-  /**
-   * Return database node
-   */
+  //Return database node (for external use)
   static getNode() {
     return firebase.database().ref('board-msg');
   }
 
   
-  /**
-   * Save item in database
-   */
+  //Save info in the database
+  //- copy info in new object and ogment it with new props (uid, date)
+  //- return a promise that resolves with a success message
   static save(item, uid) {
     const listRef = firebase.database().ref('board-msg');
     let post = Object.assign({}, item);

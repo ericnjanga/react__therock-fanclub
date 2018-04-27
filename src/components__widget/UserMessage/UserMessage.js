@@ -1,7 +1,7 @@
 /**
- * - Renders info passed in props
- * - Fetch user info as soon as component mounts to generate avatar
- */  
+ * Component rendering a card with details
+ * - Fetches a specific user info when component mounts
+ */ 
 import React from 'react';
 import { Card, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap'; 
 import DBUser from '../../utilities/DBUser.class.js';  

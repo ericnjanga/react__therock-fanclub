@@ -9,6 +9,7 @@
  
 .VerticalNav.is-active > nav {
   transform: translateX(0);
+  z-index: 100;
 }
 
 .VerticalNav, 
@@ -28,7 +29,6 @@
 .VerticalNav > nav {
   transform: translateX(-250px);
   position: relative;
-  z-index: 100;
   width: 230px; 
   background: #fafafa;
   height: 100%; 

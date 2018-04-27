@@ -1,15 +1,12 @@
-
-import firebase from './../services/firebase.js';
-
-
 /**
  * Class dedicated to users
  */
+import firebase from './../services/firebase.js';
+
+
 class DBUser { 
-  /**
-   * Get a user from the database ...
-   * (returns a promise which resolves when the snapshot is ready)
-   */ 
+  //Get a user from the database ...
+  //(returns a promise which resolves when the snapshot is ready) 
   static get(uid) { 
     return new Promise((resolve, reject) => {
       firebase.database().ref('/users/' + uid).once('value').then(function(snapshot) {
@@ -18,30 +15,16 @@ class DBUser {
     }); 
   }
 
-  /**
-   * Returns a subset (user properties) of an object's properties (object containing many more properties). 
-   * https://stackoverflow.com/questions/17781472/how-to-get-a-subset-of-a-javascript-objects-properties
-   */
+  //Returns a subset (user properties) of an object's properties (object containing many more properties). 
+  //https://stackoverflow.com/questions/17781472/how-to-get-a-subset-of-a-javascript-objects-properties 
   static getBasicProperties(data) {
     const properties = (({
-      displayName, 
-      email, 
-      phoneNumber, 
-      photoURL, 
-      biography, 
-      visible 
+      displayName, email, phoneNumber, photoURL, biography, visible, uid 
     }) => ({
-      displayName, 
-      email, 
-      phoneNumber, 
-      photoURL, 
-      biography, 
-      visible 
+      displayName, email, phoneNumber, photoURL, biography, visible, uid 
     }))(data);
     return properties;
   }
-
-  
 
   /**
    * Use the auth object (in params) to either initilise or update user info in the database
@@ -89,7 +72,7 @@ class DBUser {
     });//[end] new Promise
   }
 
-
+  //Update user info in the database
   static updateProfile(preferences) {
     let authObject = this.getCurrentUser();
     let tpl_user = {
@@ -108,14 +91,10 @@ class DBUser {
     return firebase.database().ref().update(record);  
   }
 
-
+  //return currently logged user info
   static getCurrentUser() {
     return firebase.auth().currentUser;
   }
 }
 
 export default DBUser;
-
-
-// Get a key for a new Post.
-// let newPostKey = firebase.database().ref().child('users').push().key;

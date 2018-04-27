@@ -1,11 +1,13 @@
-import React from 'react';
-//...
+/**
+ * Component rendering a card with details
+ * - Fetches a specific user info when component mounts
+ */ 
+import React from 'react'; 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import MessageForm from '../MessageForm/MessageForm';
 import UserAvatar from '../UserAvatar/UserAvatar';
+import DBPost from '../../utilities/DBPost.class.js';  
 import './UserMessageModal.css';
-import DBPost from '../../utilities/DBPost.class.js'; 
-import firebase from '../../services/firebase';
 
 
 class UserMessageModal extends React.Component { 
@@ -19,15 +21,10 @@ class UserMessageModal extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  //Save info to post database, cleaniup state and hi demodal
   handleSubmit(event, user) {
-    event.preventDefault(); 
-    //...
-		const item = { 
-			title: this.state.title, 
-      content: this.state.content
-		}; 
-    
-    DBPost.save(item, user.uid).then((ready) => { 
+    event.preventDefault();  
+    DBPost.save(this.state, user.uid).then((ready) => { 
       //Cleanup form when post is successful ...
       this.setState((prevState, props) => {
         return {
@@ -36,9 +33,6 @@ class UserMessageModal extends React.Component {
         }
       }); 
     });
-
-    
-    //...
     this.props.toggle();
   }//[end] handleSubmit
 

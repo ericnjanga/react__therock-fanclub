@@ -1,36 +1,21 @@
 /**
  * Main Application
  * ---------------------------
- */
-
-//Imports React packages
+ */ 
 import React, { Component } from 'react'; 
-import { BrowserRouter as Router } from 'react-router-dom';
-
-//Firebase Packages ...
-import { auth, provider } from './services/firebase.js';
-
-//Import global components
+import { BrowserRouter as Router } from 'react-router-dom'; 
+import { auth, provider } from './services/firebase.js'; 
 import AppHeader from './components__global/AppHeader/AppHeader.js';
 import VerticalNav from './components__global/VerticalNav/VerticalNav.js';
 import AppFooter from './components__global/AppFooter/AppFooter.js';
 import MenuPrimary from './components__global/MenuPrimary.js';
-import MenuSecondary from './components__global/MenuSecondary.js';
-
-//Import view components
-import ViewAll from './components__view/ViewAll.js'; 
-
-//Import widget components
-import Toast from './components__widget/Toast/Toast.js'; 
-
-import DBUser from  './utilities/DBUser.class.js'; 
-
-
-//Main styles
+import MenuSecondary from './components__global/MenuSecondary.js'; 
+import ViewAll from './components__view/ViewAll.js';  
+import Toast from './components__widget/Toast/Toast.js';  
+import DBUser from  './utilities/DBUser.class.js';  
 import './styles/App.css'; 
 
-
-//Main App class
+ 
 class App extends Component {
   constructor(props) {
     super(props);
@@ -106,6 +91,7 @@ class App extends Component {
   handleProfileUpdate(userProfile) {
     this.setState({ userProfile });
   }
+  
   render() {
     const { userProfile } = this.state;
     const { vertNavIsActive } = this.state;
@@ -127,7 +113,7 @@ class App extends Component {
             </VerticalNav>
           }
           
-          <section className="app-content">
+          <section className="AppContent">
             {
               userProfile===undefined ? <Toast msg={'Loading your preferences'} /> : <ViewAll user={userProfile} onProfileChange={this.handleProfileUpdate} onLogin={this.handleLogin} />
             }  
@@ -139,7 +125,5 @@ class App extends Component {
     );
   }
 }
-
-
 
 export default App;

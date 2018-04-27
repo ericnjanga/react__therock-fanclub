@@ -5,6 +5,7 @@
  * - <figcaption /> isn't rendered if img.caption is undefined
  */
 import React from 'react';
+import './Figure.css';
 
 
 const Figure = (props)=>{
