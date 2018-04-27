@@ -1,20 +1,11 @@
-/**
- * Profile View
- * ---------------------
- *  
- */
-
 import React from 'react'; 
 import { Container, Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import UserAvatar from './../../components__widget/UserAvatar/UserAvatar.js';
-import getUserFromDB from '../../utilities/db_utilities.js'; 
-import Toast from './../../components__widget/Toast/Toast.js'; 
-import firebase from '../../services/firebase.js'; 
+import UserAvatar from './../../components__widget/UserAvatar/UserAvatar.js'; 
+import Toast from './../../components__widget/Toast/Toast.js';  
 import DBUser from '../../utilities/DBUser.class.js'; 
-
 import './ViewProfile.css';
 
-//Component ...
+
 class ViewProfile extends React.Component {
   constructor(props) {
     super(props); 
@@ -26,7 +17,7 @@ class ViewProfile extends React.Component {
     this.handleSubmit       = this.handleSubmit.bind(this);
   } 
 
-  //...
+  //Save input value in the state object (@userProfile)
   handleInputChange(e) { 
     const target = e.target;
     const name = target.name;
@@ -55,9 +46,8 @@ class ViewProfile extends React.Component {
   render() {
     const { user } = this.props;
     const { userProfile, overlayActive } = this.state;
-    
     return(
-      <Container>
+      <Container className="view__content ViewProfile"> 
         { /* Display a toast if the list of items is not yet ready */
           overlayActive && <Toast msg={'Saving data'} /> 
         }

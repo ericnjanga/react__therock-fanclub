@@ -1,7 +1,10 @@
+/**
+ * Component rendering a <form /> which will handle data submition from the "message board"
+ */
 import React from 'react';
-import './MessageForm.css';
-//...
 import { Form, FormGroup, Label, Input } from 'reactstrap';
+// import './MessageForm.css'; 
+
 
 const MessageForm = (props) => {
   const { handleSubmit, handleChange, title, content } = props; 

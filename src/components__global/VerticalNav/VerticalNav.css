@@ -1,5 +1,4 @@
 
- 
 .VerticalNav__obstructor {
   opacity: 0;
   z-index: -1; 
@@ -53,8 +52,6 @@
   text-decoration: none;
   background: rgba(0,0,0,.1);
 }
-
-
 
 .VerticalNav .UserAvatar {
   padding: 20px;

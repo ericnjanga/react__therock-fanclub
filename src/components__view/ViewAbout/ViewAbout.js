@@ -1,20 +1,10 @@
-/**
- * Sample View
- * ---------------------
- * 
- * About component: 
- * - Renders view title and basic content (image and text)
- */
-
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import Figure from './../../components__widget/Figure/Figure.js';
-import './ViewAbout.css';
-
-//Images ...
+// import './ViewAbout.css';  
 import img1 from './../../images/therock-5.jpeg'; 
 
-//Component ...
+
 const ViewAbout = () => {
   return(
     <Container className="view__content">

@@ -1,9 +1,6 @@
-
-
-
-
-
-
+/**
+ * Styling for all views
+*/
 /*-- larger screens --*/
 @media(min-width: 766px) { 
   .view__content figure {

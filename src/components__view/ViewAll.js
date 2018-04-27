@@ -1,7 +1,8 @@
+/**
+ * Component encapsulating all views
+ */
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-
-//Import view components 
+import { Route, Redirect } from 'react-router-dom'; 
 import ViewAbout from './ViewAbout/ViewAbout.js';
 import ViewArticles from './ViewArticles/ViewArticles.js';
 import ViewGallery from './ViewGallery/ViewGallery.js';
@@ -12,6 +13,7 @@ import ViewLogin from './ViewLogin/ViewLogin.js';
 import ViewTermsAndConditions from './ViewTermsAndConditions/ViewTermsAndConditions.js';
 import ViewMessageBoard from './ViewMessageBoard/ViewMessageBoard.js';
 import './ViewAll.css';
+
 
 const ViewAll = (props) => {
   const { user, onLogin, onProfileChange } = props;

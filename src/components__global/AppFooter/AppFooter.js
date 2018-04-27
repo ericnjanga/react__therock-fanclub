@@ -5,7 +5,7 @@ import './AppFooter.css';
 
 const AppFooter = (props) => {
   return(
-    <footer className="app-footer">
+    <footer className="AppFooter">
       <Container>
         <Row>
           <Col>

@@ -1,18 +1,10 @@
-/**
- * Sample View
- * ---------------------
- *  
- */
-
 import React from 'react'; 
 import { Container, Row, Col } from 'reactstrap';
 import Figure from './../../components__widget/Figure/Figure.js';
-import './ViewGallery.css';
-
-//Images ...
+// import './ViewGallery.css'; 
 import img1 from './../../images/therock-7.jpg'; 
 
-//Component ...
+
 const ViewGallery = () => {
   return(
     <Container className="view__content">

@@ -1,16 +1,15 @@
 
-
-.app-footer {   
+.AppFooter {   
   padding-top: 20px;
   padding-bottom: 20px;
   text-align: center;
   background-color: #333; 
 }
    
-.app-footer a {
+.AppFooter a {
   color: lime;
   font-size: 0.9rem;
 } 
-.app-footer p {
+.AppFooter p {
   margin-bottom: 0;
 } 

@@ -1,9 +1,13 @@
+/**
+ * - Renders info passed in props
+ * - Fetch user info as soon as component mounts to generate avatar
+ */ 
 import React from 'react';
-import './UserMessageList.css';
 import UserMessage from './../UserMessage/UserMessage.js'; 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';  
 import { Alert } from 'reactstrap';
 import faHeart from '@fortawesome/fontawesome-free-solid/faHeart'; 
+import './UserMessageList.css';
 
 const UserMessageList = (props) => {
   return(

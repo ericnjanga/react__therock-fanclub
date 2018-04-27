@@ -1,13 +1,14 @@
-import React from 'react';
-import './UserMessage.css';
-import { Card, CardText, CardBody,
-  CardTitle, CardSubtitle } from 'reactstrap'; 
-import DBUser from '../../utilities/DBUser.class.js';  
-
 /**
  * - Renders info passed in props
  * - Fetch user info as soon as component mounts to generate avatar
  */  
+import React from 'react';
+import { Card, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap'; 
+import DBUser from '../../utilities/DBUser.class.js';  
+import UserAvatar from './../../components__widget/UserAvatar/UserAvatar.js';
+import './UserMessage.css';
+
+
 class UserMessage extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +29,7 @@ class UserMessage extends React.Component {
     return( 
       <Card className="UserMessage"> 
         <CardBody>
-          { user && <img className="user-avatar" src={user.photoURL} alt={user.displayName} /> }
+          { user && <UserAvatar item={user} /> }
           <CardTitle>{data.title}</CardTitle>
           <CardSubtitle>Card subtitle</CardSubtitle>
           <CardText>{data.content}</CardText> 

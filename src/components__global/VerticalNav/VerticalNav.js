@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';  
-import UserAvatar from './../../components__widget/UserAvatar/UserAvatar.js';
-import DBUser from '../../utilities/DBUser.class.js'; 
-
-import './VerticalNav.css';
+import UserAvatar from './../../components__widget/UserAvatar/UserAvatar.js'; 
 import './../../styles/menus.css';
+import './VerticalNav.css';
 
 
 class VerticalNav extends React.Component {  
@@ -28,7 +26,11 @@ class VerticalNav extends React.Component {
       <section className={'VerticalNav' +(isActive?' is-active':'')}>
         <nav> 
           <div className="VerticalNav__navs">
-            { user && <UserAvatar item={user} showSubInfo={true} /> } 
+            { 
+              user && <UserAvatar item={user}> 
+                <p>{user.displayName}</p>
+              </UserAvatar>
+            } 
             <hr className="hr-menu" /> 
             {children} 
           </div>

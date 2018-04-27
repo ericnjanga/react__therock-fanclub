@@ -1,41 +1,39 @@
 
-.app-header { 
+.AppHeader { 
   padding: 10px 15px;  
   background-color: #222;   
 }
-.app-header__top {
+.AppHeader__top {
   display: flex;
   align-items: center; 
   width: 100%;
 }
 
-
-
-.App-brand {
+.AppHeader .AppBrand {
   margin: 0; 
 }
-.App-brand a { 
+.AppHeader .AppBrand a { 
   color: lime;
   text-decoration: none;
 }
-.App-brand small {
+.AppHeader .AppBrand small {
   font-style: italic;
   color: #ccc; 
 }
 
-.btn-toggle-vertNav--sm,
-.btn-toggle-vertNav--lg button,
-.btn-toggle-vertNav--lg button:hover {
+.AppHeader .btn-toggle-vertNav--sm,
+.AppHeader .btn-toggle-vertNav--lg button,
+.AppHeader .btn-toggle-vertNav--lg button:hover {
   background: transparent;
   border: 0px solid;
 }
-.btn-toggle-vertNav--sm {
+.AppHeader .btn-toggle-vertNav--sm {
   padding-left: 0;
   padding-right: 0;
   width: 50px;
 }
 
-.btn-toggle-vertNav--lg.dropdown .nav-item a {
+.AppHeader .btn-toggle-vertNav--lg.dropdown .nav-item a {
   width: 100%;
   display: block;
   padding: 6px 20px;
@@ -43,7 +41,7 @@
 
 
 @media(max-width: 765px) {  
-  .app-header {
+  .AppHeader {
     position: fixed; 
     display: flex;
     align-items: center;
@@ -51,39 +49,39 @@
     padding: 10px 15px; 
     background-color: #222;  
   }
-  .app-header__top {
+  .AppHeader__top {
     flex-direction: row-reverse;
     justify-content: flex-end;
   }
-  .app-header .user-avatar{ 
+  .AppHeader .user-avatar{ 
     margin-right: 10px;
   }
-  .App-brand { 
+  .AppHeader .AppBrand { 
     font-size: 1.1rem; 
   }
-  .App-brand small { 
+  .AppHeader .AppBrand small { 
     font-size: 0.8rem;
   }
-  .btn-toggle-vertNav--lg {
+  .AppHeader .btn-toggle-vertNav--lg {
     display: none;
   }
 }
 
 @media(min-width: 766px) { 
-  .app-header { 
+  .AppHeader { 
     padding: 20px;  
   }
-  .app-header__top { 
+  .AppHeader__top { 
     justify-content: space-between;    
     margin-bottom: 20px;  
   }
-  .App-brand { 
+  .AppHeader .AppBrand { 
     font-size: 1.5rem; 
   }
-  .App-brand small { 
+  .AppHeader .AppBrand small { 
     font-size: 1rem;
   } 
-  .btn-toggle-vertNav--sm { 
+  .AppHeader .btn-toggle-vertNav--sm { 
     display: none;
   }
 }

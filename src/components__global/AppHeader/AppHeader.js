@@ -1,14 +1,11 @@
 import React from 'react';
-
 import { Link } from 'react-router-dom'; 
 import { Dropdown, DropdownToggle, DropdownMenu, Button } from 'reactstrap';
-
 import HorizontalNav from './../HorizontalNav/HorizontalNav.js';
 import MenuPrimary from './../MenuPrimary.js';
-import MenuSecondary from './../MenuSecondary.js';
-import './AppHeader.css';
-
+import MenuSecondary from './../MenuSecondary.js'; 
 import UserAvatar from './../../components__widget/UserAvatar/UserAvatar.js';
+import './AppHeader.css';
  
 class AppHeader extends React.Component { 
   constructor(props) {
@@ -29,9 +26,9 @@ class AppHeader extends React.Component {
   render() {
     const { user, onLogout, navIsActive, onToggleVertNav, onCloseVertNav } = this.props;
     return(
-      <header className="app-header"> 
-        <div className="app-header__top">
-          <h1 className="App-brand">
+      <header className="AppHeader"> 
+        <div className="AppHeader__top">
+          <h1 className="AppBrand">
             <Link onClick={onCloseVertNav} to={`/`}>
               The Rock <small>Fan Club</small>
             </Link> 

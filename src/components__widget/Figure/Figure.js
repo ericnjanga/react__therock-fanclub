@@ -1,4 +1,11 @@
+/**
+ * Component rendering a <figure /> which wraps and <imag /> and a <figcaption />
+ * - component isn't rendered if img.props is undefined
+ * - empty string is displayed if props.alt is undefined
+ * - <figcaption /> isn't rendered if img.caption is undefined
+ */
 import React from 'react';
+
 
 const Figure = (props)=>{
   const { img, alt, caption } = props;
